@@ -1,7 +1,7 @@
-.swiper-pagination-progressbar {
+/* .swiper-pagination-progressbar {
   bottom: auto !important;
   top: 68px !important;
-}
+} */
 
 .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
   background-color: rgb(239 68 68);
@@ -13,9 +13,9 @@
   color: rgb(239 68 68);
 }
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
   .swiper-pagination-progressbar {
     bottom: auto !important;
     top: 64px !important;
   }
-}
+} */
