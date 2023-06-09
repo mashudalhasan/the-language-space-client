@@ -1,0 +1,11 @@
+.bg-circle {
+  background-image: url("../../../assets/banner/circle-scatter-haikei.svg");
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.classes {
+  position: relative;
+  z-index: 1;
+}
