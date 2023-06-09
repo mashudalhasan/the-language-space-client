@@ -1,50 +1,42 @@
-const InstructorCards = () => {
+import classImg from "../../assets/banner/class.svg";
+
+const InstructorCards = ({ instructor }) => {
+  const {
+    instructor_name,
+    instructor_image,
+    number_of_classes_taken_by_instructor,
+  } = instructor;
+
   return (
     <div>
-      <a
-        href="#"
-        className="bg-white relative block overflow-hidden rounded-lg p-4 sm:p-6 lg:p-8"
-      >
-        <span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500"></span>
+      <a href="#" className="group relative block bg-black rounded-lg">
+        <img
+          alt="Instructor"
+          src={instructor_image}
+          className="absolute inset-0 h-full w-full object-cover rounded-lg opacity-75 transition-opacity group-hover:opacity-40"
+        />
 
-        <div className="sm:flex sm:justify-between sm:gap-4">
-          <div>
-            <h3 className="text-lg font-bold text-gray-900 sm:text-xl">
-              Building a SaaS product as a software developer
-            </h3>
-
-            <p className="mt-1 text-xs font-medium text-gray-600">
-              By John Doe
-            </p>
-          </div>
-
-          <div className="hidden sm:block sm:shrink-0">
-            <img
-              alt="Paul Clapton"
-              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
-              className="h-16 w-16 rounded-lg object-cover shadow-sm"
-            />
-          </div>
-        </div>
-
-        <div className="mt-4">
-          <p className="max-w-[40ch] text-sm text-gray-500">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. At velit
-            illum provident a, ipsa maiores deleniti consectetur nobis et eaque.
+        <div className="relative p-4 sm:p-6 lg:p-8">
+          <p className="text-sm font-medium uppercase tracking-widest text-red-500">
+            Instructor
           </p>
+
+          <p className="text-xl font-bold text-white sm:text-2xl">
+            {instructor_name}
+          </p>
+
+          <div className="mt-32 sm:mt-48 lg:mt-64">
+            <div className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
+              <div className="flex items-center gap-5">
+                <img src={classImg} alt="" className="w-10 h-10"/>
+                <div className="text-white font-semibold">
+                  <p>Number of Classes</p>
+                  <p>{number_of_classes_taken_by_instructor}</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <dl className="mt-6 flex gap-4 sm:gap-6">
-          <div className="flex flex-col-reverse">
-            <dt className="text-sm font-medium text-gray-600">Published</dt>
-            <dd className="text-xs text-gray-500">31st June, 2021</dd>
-          </div>
-
-          <div className="flex flex-col-reverse">
-            <dt className="text-sm font-medium text-gray-600">Reading time</dt>
-            <dd className="text-xs text-gray-500">3 minute</dd>
-          </div>
-        </dl>
       </a>
     </div>
   );

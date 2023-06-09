@@ -17,7 +17,7 @@ const PopularInstructors = () => {
       });
   }, []);
   return (
-    <section className="bg-circle pt-12">
+    <section className="bg-circle p-12">
       <div className="classes">
         <SectionTitle
           heading={"Top Instructors"}
