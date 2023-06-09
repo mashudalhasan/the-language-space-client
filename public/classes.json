@@ -2,7 +2,7 @@
   {
     "_id": "642c155b2c4774f05c36eeaa",
     "class_name": "Spanish for Kids",
-    "class_image": "spanish.jpg",
+    "class_image": "https://www.onlinecoursereport.com/wp-content/uploads/2020/12/shutterstock_1355591063-1024x512.jpg",
     "number_of_students": 25,
     "instructor_name": "Alex Sanchez",
     "instructor_image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80",
@@ -15,7 +15,7 @@
   {
     "_id": "642c155b2c4774f05c36eeab",
     "class_name": "French for Kids",
-    "class_image": "French.jpg",
+    "class_image": "https://gurmentor.com/wp-content/uploads/2020/05/gurmentor.com-2020-05-23_17-44-11_288465-1024x679.jpg",
     "number_of_students": 15,
     "instructor_name": "Jean-Luc Martin",
     "instructor_image": "https://img.freepik.com/premium-photo/portrait-young-male-teacher-class_250409-203.jpg",
@@ -28,7 +28,7 @@
   {
     "_id": "642c155b2c4774f05c36eeac",
     "class_name": "German for Kids",
-    "class_image": "german.jpg",
+    "class_image": "https://cdn.ihcairoeg.com/wp-content/uploads/2020/04/learn-german-1024x537.jpg",
     "number_of_students": 8,
     "instructor_name": "Hans Schmidt",
     "instructor_image": "https://aup.imgix.net/user_images/120133/georg-1594669975.jpg",
@@ -41,7 +41,7 @@
   {
     "_id": "642c155b2c4774f05c36eead",
     "class_name": "Mandarin for Kids",
-    "class_image": "Mandarin.jpg",
+    "class_image": "https://img.lovepik.com/desgin_photo/40083/5868_detail.jpg!detail808",
     "number_of_students": 12,
     "instructor_name": "Li Wei",
     "instructor_image": "https://tealit.com/upimage/20112319132256.jpg",
@@ -54,7 +54,7 @@
   {
     "_id": "642c155b2c4774f05c36eeae",
     "class_name": "Italian for Kids",
-    "class_image": "",
+    "class_image": "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/43333624202489.563383d3438cb.jpg",
     "number_of_students": 6,
     "instructor_name": "Giulia Rossi",
     "instructor_image": "https://c.superprof.com/i/a/23917169/10990343/600/20221123090444/friendly-italian-native-speaker-classicist-italian-teacher-london-giacomo.jpg",
@@ -67,7 +67,7 @@
   {
     "_id": "642c155b2c4774f05c36eeaf",
     "class_name": "Japanese for Kids",
-    "class_image": "Japanese.jpg",
+    "class_image": "https://thumbs.dreamstime.com/b/learn-japanese-indicates-japan-language-speech-mountain-sun-symbols-130548046.jpg",
     "number_of_students": 20,
     "instructor_name": "Sato Tanaka",
     "instructor_image": "https://cdn.mainichi.jp/vol1/2016/10/15/20161015p2a00m0na015000p/9.jpg?1",
@@ -80,10 +80,10 @@
   {
     "_id": "642c155b2c4774f05c36eeb0",
     "class_name": "Arabic for Kids",
-    "class_image": "Arabic.jpg",
+    "class_image": "https://m.media-amazon.com/images/I/615Dvy1EgJL._AC_UF1000,1000_QL80_.jpg",
     "number_of_students": 10,
     "instructor_name": "Abdullah Omar",
-    "instructor_image": "https://aup.imgix.net/user_images/79408/priveles-arabisch-leren-lezen-schrijven-spreken-middels-een-pedagogisch-vriendelijke-methode-1569249145.jpg",
+    "instructor_image": "https://cdn.shopify.com/s/files/1/0565/1775/5085/products/f6a124a87203b13cdade84ddac12a56e.jpg?v=1634307446",
     "instructor_email": "omar@example.com",
     "number_of_classes_taken_by_instructor": 4,
     "available_seats": 10,
@@ -93,7 +93,7 @@
   {
     "_id": "642c155b2c4774f05c36eeb1",
     "class_name": "Russian for Kids",
-    "class_image": "Russian.jpg",
+    "class_image": "https://www.eszett-bls.com/images/2020/10/17/images_languages_russian.jpg",
     "number_of_students": 7,
     "instructor_name": "Ivan Petrov",
     "instructor_image": "https://images.unsplash.com/photo-1544348817-5f2cf14b88c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80",
@@ -106,7 +106,7 @@
   {
     "_id": "642c155b2c4774f05c36eeb2",
     "class_name": "Portuguese for Kids",
-    "class_image": "Portuguese.jpg",
+    "class_image": "https://img.freepik.com/premium-vector/vibrant-yellow-brazilian-portuguese-poster-translation-learn-something-new-everyday_489942-187.jpg?w=2000",
     "number_of_students": 18,
     "instructor_name": "Mercel Silva",
     "instructor_image": "https://www.middlebury.edu/language-schools/sites/www.middlebury.edu.language-schools/files/styles/300x400/public/2023-02/Portuguese%20Morrison%20Ryan.jpg?fv=sI7xx70x&itok=V1YIoTOA",
@@ -119,7 +119,7 @@
   {
     "_id": "642c155b2c4774f05c36eeb3",
     "class_name": "Swahili for Kids",
-    "class_image": "swahili.jpg",
+    "class_image": "https://ruman-llc.com/wp-content/uploads/2021/09/uuuuuuuuuu.jpg",
     "number_of_students": 5,
     "instructor_name": "Lilian Njoroge",
     "instructor_image": "https://media.istockphoto.com/id/1353373018/photo/portrait-of-male-university-or-college-tutor-outdoors-with-modern-campus-building-in.jpg?s=612x612&w=0&k=20&c=J10zyMr931zGgjG8qY8zWJfoRatdc0josYo6zp5-qUk=",
@@ -132,7 +132,7 @@
   {
     "_id": "642c155b2c4774f05c36eeb4",
     "class_name": "Korean for Kids",
-    "class_image": "korean.jpg",
+    "class_image": "https://i.etsystatic.com/8897793/r/il/104e32/4238410786/il_fullxfull.4238410786_riaw.jpg",
     "number_of_students": 14,
     "instructor_name": "Min-Ji Kim",
     "instructor_image": "https://thumbs.dreamstime.com/b/young-businessman-touch-tablet-pc-isolated-white-background-55392670.jpg",
@@ -145,7 +145,7 @@
   {
     "_id": "642c155b2c4774f05c36eeb5",
     "class_name": "Hindi for Kids",
-    "class_image": "hindi.jpg",
+    "class_image": "https://img.freepik.com/free-vector/happy-hindi-diwas-14-september-celebration-with-hindi-text-design_1035-24831.jpg?w=740&t=st=1686317287~exp=1686317887~hmac=7d950f9c6f07cd325322e1e05631e46bbbfeaaf48cea99a0f07256fe0d3119fd",
     "number_of_students": 9,
     "instructor_name": "Raj Patel",
     "instructor_image": "https://media.istockphoto.com/id/1209452740/photo/young-confident-it-manager-in-casualwear-and-eyeglasses-standing-by-workplace.jpg?s=612x612&w=0&k=20&c=sexEUS7K74NbXdwEcTu89Z9J8pTvhHLVrTE96s8R2oQ=",
