@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
-import sun from '../../assets/sun.png';
-import moon from '../../assets/moon.png';
+import sun from "../../assets/sun.png";
+import moon from "../../assets/moon.png";
 import { useEffect, useState } from "react";
 // import { FaMoon, FaSun } from 'react-icons/fa';
 
@@ -38,6 +38,9 @@ const Navbar = () => {
       </li>
       <li>
         <Link to="/classes">Classes</Link>
+      </li>
+      <li>
+        <Link to="/dashboard">Dashboard</Link>
       </li>
     </>
   );
@@ -92,7 +95,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navOptions}</ul>
       </div>
       <div className="navbar-end">
-        <Link to='/login'>
+        <Link to="/login">
           <button className="bg-red-500 w-full rounded-md py-2 px-3 text-white font-semibold tracking-wide">
             Login
           </button>
