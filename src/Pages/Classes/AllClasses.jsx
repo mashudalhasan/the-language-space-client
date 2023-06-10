@@ -1,18 +1,41 @@
-import { Link } from "react-router-dom";
 import { FaChair, FaDollarSign, FaUserAlt } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const AllClasses = ({ item }) => {
-  const { class_name, class_image, instructor_name, available_seats, price } =
-    item;
+  const {
+    class_name,
+    class_image,
+    instructor_name,
+    available_seats,
+    price,
+    _id,
+  } = item;
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleAddToCart = (item) => {
     console.log(item);
-    if (user) {
-      fetch("http://localhost:5000/carts")
+    if (user && user.email) {
+      const cartItem = {
+        itemId: _id,
+        class_name,
+        class_image,
+        instructor_name,
+        available_seats,
+        price,
+        email: user.email,
+      };
+      fetch("http://localhost:5000/carts", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(cartItem),
+      })
         .then((res) => res.json())
         .then((data) => {
           if (data.insertedId) {
@@ -27,14 +50,16 @@ const AllClasses = ({ item }) => {
         });
     } else {
       Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Please Login for Enrollment!",
-        showDenyButton: true,
-        denyButtonText: "Cancel",
-        showConfirmButton: false,
-        footer:
-          '<a href="/login" class="text-red-500">Go for <span class="font-semibold underline">Login</span></a>',
+        title: "Please Login for Enrollment",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Login",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login", { state: { from: location } });
+        }
       });
     }
   };
