@@ -2,10 +2,13 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import sun from "../../assets/sun.png";
 import moon from "../../assets/moon.png";
-import { useEffect, useState } from "react";
-// import { FaMoon, FaSun } from 'react-icons/fa';
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+// import { Tooltip } from "react-tippy";
+// import placeholder from "../../assets/others/Portrait_Placeholder_Square.png";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
   // use theme from local storage if available or set light theme
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
@@ -28,6 +31,12 @@ const Navbar = () => {
     document.querySelector("html").setAttribute("data-theme", localTheme);
   }, [theme]);
 
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.error(error.message));
+  };
+
   const navOptions = (
     <>
       <li>
@@ -42,12 +51,22 @@ const Navbar = () => {
       <li>
         <Link to="/dashboard">Dashboard</Link>
       </li>
+      {user && (
+        <li>
+          <button
+            onClick={handleLogOut}
+            className="bg-red-500 w-full rounded-md py-2 px-3 text-white font-semibold tracking-wide"
+          >
+            Logout
+          </button>
+        </li>
+      )}
     </>
   );
   return (
-    <div className="navbar  bg-base-100">
+    <div className="navbar bg-base-100">
       <div className="navbar-start">
-        <div className="dropdown">
+        <div className="dropdown z-10">
           <label
             tabIndex={0}
             className="btn bg-transparent border-none lg:hidden text-red-600"
@@ -95,11 +114,37 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navOptions}</ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login">
-          <button className="bg-red-500 w-full rounded-md py-2 px-3 text-white font-semibold tracking-wide">
-            Login
-          </button>
-        </Link>
+        {user ? (
+          <span className="mr-2 lg:mr-4 border-4 rounded-full border-slate-100 transition hover:scale-110 hover:shadow-xl">
+            {/* <Tooltip
+              title={user?.displayName}
+              position="bottom"
+              trigger="mouseenter"
+              theme="light"
+              animation="perspective"
+            >
+              {user.photoURL ? (
+                <img
+                  className="w-10 h-10 rounded-full"
+                  src={user.photoURL}
+                  alt=""
+                />
+              ) : (
+                <div className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-300 text-gray-600">
+                  {(user.displayName && user.displayName.charAt(0)) || (
+                    <img src={placeholder} alt="" className="rounded-full" />
+                  )}
+                </div>
+              )}
+            </Tooltip> */}
+          </span>
+        ) : (
+          <Link to="/login">
+            <button className="bg-red-500 w-full rounded-md py-2 px-3 text-white font-semibold tracking-wide">
+              Login
+            </button>
+          </Link>
+        )}
         {/* Toggle button here */}
         <button className="btn btn-square bg-transparent hover:bg-transparent border-none">
           <label className="swap swap-rotate w-12 h-12">
