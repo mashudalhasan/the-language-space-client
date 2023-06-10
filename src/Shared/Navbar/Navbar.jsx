@@ -52,7 +52,7 @@ const Navbar = () => {
         <Link to="/classes">Classes</Link>
       </li>
       <li>
-        <Link to="/dashboard">
+        <Link to="/dashboard/mycart">
           Dashboard
           <div className="badge bg-red-500 text-white border-none">
             {cart?.length || 0}
