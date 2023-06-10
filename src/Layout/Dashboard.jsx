@@ -124,7 +124,7 @@ const Dashboard = () => {
               </li>
               <li>
                 <NavLink
-                  to="/"
+                  to="/instructors"
                   className={({ isActive }) =>
                     isActive ? "bg-base-200 font-semibold" : ""
                   }
@@ -139,7 +139,7 @@ const Dashboard = () => {
               </li>
               <li>
                 <NavLink
-                  to="/"
+                  to="/classes"
                   className={({ isActive }) =>
                     isActive ? "bg-base-200 font-semibold" : ""
                   }
