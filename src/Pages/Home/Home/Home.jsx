@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Banner from "../Banner/Banner";
 import PopularClasses from "../PopularClasses/PopularClasses";
 import PopularInstructors from "../PopularInstructors/PopularInstructors";
@@ -5,6 +6,9 @@ import PopularInstructors from "../PopularInstructors/PopularInstructors";
 const Home = () => {
   return (
     <div>
+      <Helmet>
+        <title>The Language Space | Home</title>
+      </Helmet>
       <Banner></Banner>
       <div className="-mt-11">
         <PopularClasses></PopularClasses>
