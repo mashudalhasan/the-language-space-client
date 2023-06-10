@@ -4,8 +4,9 @@ import sun from "../../assets/sun.png";
 import moon from "../../assets/moon.png";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
-// import { Tooltip } from "react-tippy";
-// import placeholder from "../../assets/others/Portrait_Placeholder_Square.png";
+import { Tooltip } from "react-tippy";
+import placeholder from "../../assets/others/Portrait_Placeholder_Square.png";
+import "./Navbar.css";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -49,13 +50,16 @@ const Navbar = () => {
         <Link to="/classes">Classes</Link>
       </li>
       <li>
-        <Link to="/dashboard">Dashboard</Link>
+        <Link to="/dashboard">
+          Dashboard
+          <div className="badge bg-red-500 text-white border-none">99+</div>
+        </Link>
       </li>
       {user && (
         <li>
           <button
             onClick={handleLogOut}
-            className="bg-red-500 w-full rounded-md py-2 px-3 text-white font-semibold tracking-wide"
+            className="bg-red-500 w-full rounded-md py-2 px-3 text-white font-semibold tracking-wide bg-btn"
           >
             Logout
           </button>
@@ -111,12 +115,12 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{navOptions}</ul>
+        <ul className="menu menu-horizontal px-1 gap-3">{navOptions}</ul>
       </div>
       <div className="navbar-end">
         {user ? (
-          <span className="mr-2 lg:mr-4 border-4 rounded-full border-slate-100 transition hover:scale-110 hover:shadow-xl">
-            {/* <Tooltip
+          <span className="mr-2 lg:mr-4 border-4 rounded-full border-slate-100 transition hover:scale-110 hover:shadow-md">
+            <Tooltip
               title={user?.displayName}
               position="bottom"
               trigger="mouseenter"
@@ -130,13 +134,13 @@ const Navbar = () => {
                   alt=""
                 />
               ) : (
-                <div className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-300 text-gray-600">
-                  {(user.displayName && user.displayName.charAt(0)) || (
-                    <img src={placeholder} alt="" className="rounded-full" />
-                  )}
-                </div>
+                <img
+                  src={placeholder}
+                  alt=""
+                  className="w-10 h-10 rounded-full"
+                />
               )}
-            </Tooltip> */}
+            </Tooltip>
           </span>
         ) : (
           <Link to="/login">

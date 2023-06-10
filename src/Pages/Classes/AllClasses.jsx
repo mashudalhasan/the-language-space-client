@@ -1,9 +1,43 @@
 import { Link } from "react-router-dom";
 import { FaChair, FaDollarSign, FaUserAlt } from "react-icons/fa";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const AllClasses = ({ item }) => {
   const { class_name, class_image, instructor_name, available_seats, price } =
     item;
+  const { user } = useContext(AuthContext);
+
+  const handleAddToCart = (item) => {
+    console.log(item);
+    if (user) {
+      fetch("http://localhost:5000/carts")
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.insertedId) {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Successfully Enrolled",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please Login for Enrollment!",
+        showDenyButton: true,
+        denyButtonText: "Cancel",
+        showConfirmButton: false,
+        footer:
+          '<a href="/login" class="text-red-500">Go for <span class="font-semibold underline">Login</span></a>',
+      });
+    }
+  };
 
   return (
     <div className="block rounded-lg p-4 shadow-md">
@@ -51,11 +85,12 @@ const AllClasses = ({ item }) => {
           </div>
         </div>
         <div className="flex-grow mt-8">
-          <Link to="/">
-            <button className="rounded-lg bg-red-500 px-8 py-3 transition hover:shadow-md active:bg-red-400 text-sm font-medium w-full mx-auto text-center text-white">
-              Enroll
-            </button>
-          </Link>
+          <button
+            onClick={() => handleAddToCart(item)}
+            className="rounded-lg bg-red-500 px-8 py-3 transition hover:shadow-md active:bg-red-400 text-sm font-medium w-full mx-auto text-center text-white"
+          >
+            Enroll
+          </button>
         </div>
       </div>
     </div>
