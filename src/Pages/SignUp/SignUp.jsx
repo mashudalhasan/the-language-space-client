@@ -27,16 +27,33 @@ const SignUp = () => {
       console.log(newUser);
       updateUserProfile(data.name, data.image)
         .then(() => {
-          console.log("user profile info updated");
-          reset();
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "User Created Successfully",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          navigate(from, { replace: true });
+          const saveUser = {
+            name: data.name,
+            email: data.email,
+            photo: data.image,
+          };
+
+          fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(saveUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                reset();
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "User Created Successfully",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                navigate(from, { replace: true });
+              }
+            });
         })
         .catch((error) => console.error(error.message));
     });
@@ -202,7 +219,10 @@ const SignUp = () => {
             </p>
             <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
           </div>
-          <div onClick={handleGoogleSignIn} className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer active:bg-base-100">
+          <div
+            onClick={handleGoogleSignIn}
+            className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer active:bg-base-100"
+          >
             <FcGoogle size={32} />
 
             <p>Continue with Google</p>
