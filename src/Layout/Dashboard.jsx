@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { Helmet } from "react-helmet-async";
 import cartIcon from "../assets/dashboard/cart.svg";
@@ -9,20 +9,24 @@ import instructorIcon from "../assets/dashboard/people.svg";
 import courseIcon from "../assets/dashboard/online-courses.svg";
 import classesIcon from "../assets/dashboard/chalkboard.svg";
 import usersIcon from "../assets/dashboard/list-users.svg";
-import { useContext } from "react";
-import { AuthContext } from "../providers/AuthProvider";
 import useCart from "../hooks/useCart";
+import useAdmin from "../hooks/useAdmin";
+import useAuth from "../hooks/useAuth";
 
 const Dashboard = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut } = useAuth();
   const [cart] = useCart();
+  const navigate = useNavigate();
 
   // TODO: load data from the server to have dynamic isAdmin based on data
-  const isAdmin = true;
+  // const isAdmin = true;
+  const [isAdmin] = useAdmin();
 
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => {
+        navigate("/");
+      })
       .catch((error) => console.error(error.message));
   };
 
@@ -86,7 +90,9 @@ const Dashboard = () => {
                         alt=""
                         className="w-6 h-6 lg:w-8 lg:h-8"
                       />
-                      <span className="text-base text-gray-700">Manage Classes</span>
+                      <span className="text-base text-gray-700">
+                        Manage Classes
+                      </span>
                       <div className="badge bg-red-500 text-white border-none">
                         {cart?.length || 0}
                       </div>
@@ -104,7 +110,9 @@ const Dashboard = () => {
                         alt=""
                         className="w-6 h-6 lg:w-8 lg:h-8"
                       />
-                      <span className="text-base text-gray-700">Manage Users</span>
+                      <span className="text-base text-gray-700">
+                        Manage Users
+                      </span>
                     </NavLink>
                   </li>
                 </>

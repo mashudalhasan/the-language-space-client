@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import sun from "../../assets/sun.png";
 import moon from "../../assets/moon.png";
@@ -43,22 +43,45 @@ const Navbar = () => {
   const navOptions = (
     <>
       <li>
-        <Link to="/">Home</Link>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? "bg-base-200 font-semibold" : ""
+          }
+        >
+          Home
+        </NavLink>
       </li>
       <li>
-        <Link to="/instructors">Instructors</Link>
+        <NavLink
+          to="/instructors"
+          className={({ isActive }) =>
+            isActive ? "bg-base-200 font-semibold" : ""
+          }
+        >
+          Instructors
+        </NavLink>
       </li>
       <li>
-        <Link to="/classes">Classes</Link>
+        <NavLink
+          to="/classes"
+          className={({ isActive }) =>
+            isActive ? "bg-base-200 font-semibold" : ""
+          }
+        >
+          Classes
+        </NavLink>
       </li>
-      <li>
-        <Link to="/dashboard/mycart">
-          Dashboard
-          <div className="badge bg-red-500 text-white border-none">
-            {cart?.length || 0}
-          </div>
-        </Link>
-      </li>
+      {user && (
+        <li>
+          <Link to="/dashboard">
+            Dashboard
+            <div className="badge bg-red-500 text-white border-none">
+              {cart?.length || 0}
+            </div>
+          </Link>
+        </li>
+      )}
       {user && (
         <li>
           <button
