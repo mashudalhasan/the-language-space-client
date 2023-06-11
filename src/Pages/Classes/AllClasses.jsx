@@ -1,11 +1,15 @@
 import { FaChair, FaDollarSign, FaUserAlt } from "react-icons/fa";
-import { useContext } from "react";
-import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import useCart from "../../hooks/useCart";
+import useAuth from "../../hooks/useAuth";
+import useAdmin from "../../hooks/useAdmin";
+import { Grid } from "react-loader-spinner";
+import useInstructor from "../../hooks/useInstructor";
 
 const AllClasses = ({ item }) => {
+  const [isAdmin, isAdminLoading] = useAdmin();
+  const [isInstructor, isInstructorLoading] = useInstructor();
   const {
     class_name,
     class_image,
@@ -14,7 +18,7 @@ const AllClasses = ({ item }) => {
     price,
     _id,
   } = item;
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth();
   const [, refetch] = useCart();
   const navigate = useNavigate();
   const location = useLocation();
@@ -67,6 +71,24 @@ const AllClasses = ({ item }) => {
     }
   };
 
+  if (isAdminLoading || isInstructorLoading) {
+    // Render a loading state while checking the user's admin/instructor status
+    return (
+      <div className="h-screen flex justify-center items-center">
+        <Grid
+          height="80"
+          width="80"
+          color="#EF4444"
+          ariaLabel="grid-loading"
+          radius="12.5"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="block rounded-lg p-4 shadow-md">
       <img
@@ -115,7 +137,12 @@ const AllClasses = ({ item }) => {
         <div className="flex-grow mt-8">
           <button
             onClick={() => handleAddToCart(item)}
-            className="rounded-lg bg-red-500 px-8 py-3 transition hover:shadow-md active:bg-red-400 text-sm font-medium w-full mx-auto text-center text-white"
+            disabled={isAdmin || isInstructor}
+            className={`rounded-lg bg-red-500 px-8 py-3 transition text-sm font-medium w-full mx-auto text-center text-white ${
+              isAdmin || isInstructor
+                ? "opacity-50 cursor-not-allowed"
+                : "hover:shadow-md active:bg-red-400"
+            }`}
           >
             Enroll
           </button>

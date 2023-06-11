@@ -8,6 +8,7 @@ const ManageUsers = () => {
 
   const { data: users = [], refetch } = useQuery(["users"], async () => {
     const res = await axiosSecure.get("/users");
+    console.log("res from manage users", res);
     return res.data;
   });
 
@@ -32,7 +33,6 @@ const ManageUsers = () => {
       });
   };
 
-
   //   make Instructor button
   const handleMakeInstructor = (user) => {
     fetch(`http://localhost:5000/users/instructor/${user._id}`, {
@@ -54,10 +54,9 @@ const ManageUsers = () => {
       });
   };
 
-
   //   make Student button
   const handleMakeStudent = (user) => {
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
+    fetch(`http://localhost:5000/users/student/${user._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -142,22 +141,22 @@ const ManageUsers = () => {
                   <div className="grid grid-cols-1 gap-2">
                     <button
                       onClick={() => handleMakeAdmin(user)}
-                      disabled={user.role ? true : false}
-                      className="btn btn-ghost btn-xs"
+                      disabled={user.role === "admin" ? true : false}
+                      className="btn btn-ghost btn-xs normal-case"
                     >
                       Make Admin
                     </button>
                     <button
                       onClick={() => handleMakeStudent(user)}
-                      disabled={user.role ? true : false}
-                      className="btn btn-ghost btn-xs"
+                      disabled={user.role === "student" ? true : false}
+                      className="btn btn-ghost btn-xs normal-case"
                     >
                       Make Student
                     </button>
                     <button
                       onClick={() => handleMakeInstructor(user)}
-                      disabled={user.role ? true : false}
-                      className="btn btn-ghost btn-xs"
+                      disabled={user.role === "instructor" ? true : false}
+                      className="btn btn-ghost btn-xs normal-case"
                     >
                       Make Instructor
                     </button>
