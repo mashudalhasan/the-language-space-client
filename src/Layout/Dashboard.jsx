@@ -7,6 +7,8 @@ import walletIcon from "../assets/dashboard/wallet.svg";
 import homeIcon from "../assets/dashboard/home.svg";
 import instructorIcon from "../assets/dashboard/people.svg";
 import courseIcon from "../assets/dashboard/online-courses.svg";
+import classesIcon from "../assets/dashboard/chalkboard.svg";
+import usersIcon from "../assets/dashboard/list-users.svg";
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import useCart from "../hooks/useCart";
@@ -14,6 +16,9 @@ import useCart from "../hooks/useCart";
 const Dashboard = () => {
   const { user, logOut } = useContext(AuthContext);
   const [cart] = useCart();
+
+  // TODO: load data from the server to have dynamic isAdmin based on data
+  const isAdmin = true;
 
   const handleLogOut = () => {
     logOut()
@@ -56,6 +61,7 @@ const Dashboard = () => {
 
           <ul className="menu p-4 w-80 h-full text-base-content bg-white border-r">
             {/* Sidebar content here */}
+
             <Link to="/">
               <div className="flex justify-start items-center gap-2 ml-4">
                 <img src={logo} alt="" className="h-8" />
@@ -64,57 +70,98 @@ const Dashboard = () => {
                 </p>
               </div>
             </Link>
+
             <div className="mt-6 ml-2 space-y-2">
-              <li>
-                <NavLink
-                  to="/dashboard/mycart"
-                  className={({ isActive }) =>
-                    isActive ? "bg-base-200 font-semibold" : ""
-                  }
-                >
-                  <img
-                    src={cartIcon}
-                    alt=""
-                    className="w-6 h-6 lg:w-8 lg:h-8"
-                  />
-                  <span className="text-base text-gray-700">My Cart</span>
-                  <div className="badge bg-red-500 text-white border-none">
-                    {cart?.length || 0}
-                  </div>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/dashboard/enrolled"
-                  className={({ isActive }) =>
-                    isActive ? "bg-base-200 font-semibold" : ""
-                  }
-                >
-                  <img
-                    src={bookingIcon}
-                    alt=""
-                    className="w-6 h-6 lg:w-8 lg:h-8"
-                  />
-                  <span className="text-base text-gray-700">Enrolled</span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/dashboard/historypay"
-                  className={({ isActive }) =>
-                    isActive ? "bg-base-200 font-semibold" : ""
-                  }
-                >
-                  <img
-                    src={walletIcon}
-                    alt=""
-                    className="w-6 h-6 lg:w-8 lg:h-8"
-                  />
-                  <span className="text-base text-gray-700">
-                    Payment History
-                  </span>
-                </NavLink>
-              </li>
+              {isAdmin ? (
+                <>
+                  <li>
+                    <NavLink
+                      to="/dashboard/manageclasses"
+                      className={({ isActive }) =>
+                        isActive ? "bg-base-200 font-semibold" : ""
+                      }
+                    >
+                      <img
+                        src={classesIcon}
+                        alt=""
+                        className="w-6 h-6 lg:w-8 lg:h-8"
+                      />
+                      <span className="text-base text-gray-700">Manage Classes</span>
+                      <div className="badge bg-red-500 text-white border-none">
+                        {cart?.length || 0}
+                      </div>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/dashboard/manageusers"
+                      className={({ isActive }) =>
+                        isActive ? "bg-base-200 font-semibold" : ""
+                      }
+                    >
+                      <img
+                        src={usersIcon}
+                        alt=""
+                        className="w-6 h-6 lg:w-8 lg:h-8"
+                      />
+                      <span className="text-base text-gray-700">Manage Users</span>
+                    </NavLink>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <NavLink
+                      to="/dashboard/mycart"
+                      className={({ isActive }) =>
+                        isActive ? "bg-base-200 font-semibold" : ""
+                      }
+                    >
+                      <img
+                        src={cartIcon}
+                        alt=""
+                        className="w-6 h-6 lg:w-8 lg:h-8"
+                      />
+                      <span className="text-base text-gray-700">My Cart</span>
+                      <div className="badge bg-red-500 text-white border-none">
+                        {cart?.length || 0}
+                      </div>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/dashboard/enrolled"
+                      className={({ isActive }) =>
+                        isActive ? "bg-base-200 font-semibold" : ""
+                      }
+                    >
+                      <img
+                        src={bookingIcon}
+                        alt=""
+                        className="w-6 h-6 lg:w-8 lg:h-8"
+                      />
+                      <span className="text-base text-gray-700">Enrolled</span>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/dashboard/historypay"
+                      className={({ isActive }) =>
+                        isActive ? "bg-base-200 font-semibold" : ""
+                      }
+                    >
+                      <img
+                        src={walletIcon}
+                        alt=""
+                        className="w-6 h-6 lg:w-8 lg:h-8"
+                      />
+                      <span className="text-base text-gray-700">
+                        Payment History
+                      </span>
+                    </NavLink>
+                  </li>
+                </>
+              )}
 
               <div className="divider"></div>
 
@@ -190,7 +237,10 @@ const Dashboard = () => {
 
                   <ul className="p-2">
                     <li>
-                      <button onClick={handleLogOut} className="w-full rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700">
+                      <button
+                        onClick={handleLogOut}
+                        className="w-full rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                      >
                         Logout
                       </button>
                     </li>

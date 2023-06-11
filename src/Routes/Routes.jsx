@@ -10,6 +10,8 @@ import PrivateRoute from "./PrivateRoute";
 import Secret from "../Pages/Secret/Secret";
 import MyCart from "../Pages/Dashboard/MyCart/MyCart";
 import Enrolled from "../Pages/Dashboard/Enrolled/Enrolled";
+import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
+import ManageClasses from "../Pages/Dashboard/ManageClasses/ManageClasses";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +63,14 @@ const router = createBrowserRouter([
       {
         path: "enrolled",
         element: <Enrolled></Enrolled>,
+      },
+      {
+        path: "manageclasses",
+        element: <ManageClasses></ManageClasses>,
+      },
+      {
+        path: "manageusers",
+        element: <ManageUsers></ManageUsers>,
       },
     ],
   },
