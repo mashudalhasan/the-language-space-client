@@ -12,15 +12,20 @@ import usersIcon from "../assets/dashboard/list-users.svg";
 import useCart from "../hooks/useCart";
 import useAdmin from "../hooks/useAdmin";
 import useAuth from "../hooks/useAuth";
+import useInstructor from "../hooks/useInstructor";
+import useStudent from "../hooks/useStudent";
 
 const Dashboard = () => {
   const { user, logOut } = useAuth();
+  console.log(user);
   const [cart] = useCart();
   const navigate = useNavigate();
 
   // TODO: load data from the server to have dynamic isAdmin based on data
   // const isAdmin = true;
   const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
+  const [isStudent] = useStudent();
 
   const handleLogOut = () => {
     logOut()
@@ -76,7 +81,9 @@ const Dashboard = () => {
             </Link>
 
             <div className="mt-6 ml-2 space-y-2">
-              {isAdmin ? (
+              {/* admin menu */}
+
+              {isAdmin && (
                 <>
                   <li>
                     <NavLink
@@ -116,7 +123,51 @@ const Dashboard = () => {
                     </NavLink>
                   </li>
                 </>
-              ) : (
+              )}
+
+              {/* instructor menu */}
+
+              {isInstructor && (
+                <>
+                  <li>
+                    <NavLink
+                      to="/dashboard/addclass"
+                      className={({ isActive }) =>
+                        isActive ? "bg-base-200 font-semibold" : ""
+                      }
+                    >
+                      <img
+                        src={classesIcon}
+                        alt=""
+                        className="w-6 h-6 lg:w-8 lg:h-8"
+                      />
+                      <span className="text-base text-gray-700">Add Class</span>
+                      <div className="badge bg-red-500 text-white border-none">
+                        {cart?.length || 0}
+                      </div>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/dashboard/myclass"
+                      className={({ isActive }) =>
+                        isActive ? "bg-base-200 font-semibold" : ""
+                      }
+                    >
+                      <img
+                        src={usersIcon}
+                        alt=""
+                        className="w-6 h-6 lg:w-8 lg:h-8"
+                      />
+                      <span className="text-base text-gray-700">My Class</span>
+                    </NavLink>
+                  </li>
+                </>
+              )}
+
+              {/* student menu */}
+
+              {(isStudent || user) && (
                 <>
                   <li>
                     <NavLink

@@ -1,11 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const ManageUsers = () => {
-  const [disabled, setDisabled] = useState([]);
   const [axiosSecure] = useAxiosSecure();
 
   const { data: users = [], refetch } = useQuery(["users"], async () => {
@@ -13,6 +11,7 @@ const ManageUsers = () => {
     return res.data;
   });
 
+  //   make admin button
   const handleMakeAdmin = (user) => {
     fetch(`http://localhost:5000/users/admin/${user._id}`, {
       method: "PATCH",
@@ -22,11 +21,54 @@ const ManageUsers = () => {
         console.log(data);
         if (data.modifiedCount) {
           refetch();
-          setDisabled([...disabled, user._id]);
           Swal.fire({
             position: "top-end",
             icon: "success",
             title: `${user.name} is an Admin now.`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
+
+
+  //   make Instructor button
+  const handleMakeInstructor = (user) => {
+    fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${user.name} is an Instructor now.`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
+
+
+  //   make Student button
+  const handleMakeStudent = (user) => {
+    fetch(`http://localhost:5000/users/admin/${user._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${user.name} is an Student now.`,
             showConfirmButton: false,
             timer: 1500,
           });
@@ -84,8 +126,6 @@ const ManageUsers = () => {
             </tr>
           </thead>
           <tbody>
-            {/* row 1 */}
-
             {users.map((user) => (
               <tr key={user._id} className="text-center">
                 <td>
@@ -99,13 +139,29 @@ const ManageUsers = () => {
                 <td>{user.email}</td>
                 <td>{user.role}</td>
                 <td>
-                  <button
-                    onClick={() => handleMakeAdmin(user)}
-                    disabled={disabled.includes(user._id)}
-                    className="btn btn-ghost btn-xs"
-                  >
-                    Make Admin
-                  </button>
+                  <div className="grid grid-cols-1 gap-2">
+                    <button
+                      onClick={() => handleMakeAdmin(user)}
+                      disabled={user.role ? true : false}
+                      className="btn btn-ghost btn-xs"
+                    >
+                      Make Admin
+                    </button>
+                    <button
+                      onClick={() => handleMakeStudent(user)}
+                      disabled={user.role ? true : false}
+                      className="btn btn-ghost btn-xs"
+                    >
+                      Make Student
+                    </button>
+                    <button
+                      onClick={() => handleMakeInstructor(user)}
+                      disabled={user.role ? true : false}
+                      className="btn btn-ghost btn-xs"
+                    >
+                      Make Instructor
+                    </button>
+                  </div>
                 </td>
                 <td>
                   <button
