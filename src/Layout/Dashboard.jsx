@@ -9,9 +9,17 @@ import instructorIcon from "../assets/dashboard/people.svg";
 import courseIcon from "../assets/dashboard/online-courses.svg";
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
+import useCart from "../hooks/useCart";
 
 const Dashboard = () => {
-  const {user} = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  const [cart] = useCart();
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.error(error.message));
+  };
 
   return (
     <div>
@@ -70,6 +78,9 @@ const Dashboard = () => {
                     className="w-6 h-6 lg:w-8 lg:h-8"
                   />
                   <span className="text-base text-gray-700">My Cart</span>
+                  <div className="badge bg-red-500 text-white border-none">
+                    {cart?.length || 0}
+                  </div>
                 </NavLink>
               </li>
               <li>
@@ -179,7 +190,7 @@ const Dashboard = () => {
 
                   <ul className="p-2">
                     <li>
-                      <button className="w-full rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700">
+                      <button onClick={handleLogOut} className="w-full rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700">
                         Logout
                       </button>
                     </li>

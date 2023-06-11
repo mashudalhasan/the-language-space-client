@@ -2,12 +2,38 @@ import { Helmet } from "react-helmet-async";
 import useCart from "../../../hooks/useCart";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const MyCart = () => {
   const { user } = useContext(AuthContext);
-  const [cart] = useCart();
+  const [cart, refetch] = useCart();
   console.log(cart);
   const total = cart.reduce((sum, item) => item.price + sum, 0);
+
+  const handleDelete = (item) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/carts/${item._id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              refetch();
+              Swal.fire("Deleted!", "Your Course has been deleted.", "success");
+            }
+          });
+      }
+    });
+  };
 
   return (
     <div>
@@ -20,7 +46,7 @@ const MyCart = () => {
       <div className="mx-auto w-3/4 lg:w-full  sm:px-6 sm:py-12 lg:px-8">
         <div>
           <header className="text-center">
-            <h1 className="text-xl font-semibold text-gray-900 sm:text-3xl">
+            <h1 className="text-xl font-semibold tracking-tighter text-gray-900 sm:text-3xl">
               {user?.displayName}&apos;s Cart
             </h1>
           </header>
@@ -49,7 +75,10 @@ const MyCart = () => {
                   <div className="flex flex-1 items-center justify-end gap-2">
                     <p>${item.price}</p>
 
-                    <button className="text-gray-600 transition hover:text-red-500">
+                    <button
+                      onClick={() => handleDelete(item)}
+                      className="text-gray-600 transition hover:text-red-500"
+                    >
                       <span className="sr-only">Remove item</span>
 
                       <svg
@@ -98,9 +127,7 @@ const MyCart = () => {
                       />
                     </svg>
 
-                    <p className="whitespace-nowrap text-xs">
-                      VAT Included
-                    </p>
+                    <p className="whitespace-nowrap text-xs">VAT Included</p>
                   </span>
                 </div>
 
