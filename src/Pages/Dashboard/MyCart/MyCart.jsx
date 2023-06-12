@@ -3,6 +3,7 @@ import useCart from "../../../hooks/useCart";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MyCart = () => {
   const { user } = useContext(AuthContext);
@@ -132,12 +133,12 @@ const MyCart = () => {
                 </div>
 
                 <div className="flex justify-end">
-                  <a
-                    href="#"
+                  <Link
+                    to="/dashboard/payment"
                     className="block rounded-md bg-red-500 px-5 py-3 text-sm text-white transition hover:bg-opacity-90 active:bg-red-600"
                   >
                     Checkout
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
