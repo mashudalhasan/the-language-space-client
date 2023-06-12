@@ -16,6 +16,7 @@ const AddClass = () => {
     const price = form.price.value;
     const status = form.status.value;
     const image = form.image.value;
+    const instructorImage = form.instructorImage.value;
 
     const newClass = {
       instructor_name: instructorName,
@@ -25,6 +26,7 @@ const AddClass = () => {
       price,
       status,
       class_image: image,
+      instructor_image: instructorImage,
     };
     console.log(newClass);
 
@@ -59,7 +61,7 @@ const AddClass = () => {
       {/* content */}
 
       <div className="bg-base-100 p-8 rounded-md shadow-md">
-        <h2 className="text-xl text-center font-semibold tracking-tighter text-gray-900 sm:text-3xl">
+        <h2 className="text-xl text-center font-semibold tracking-tighter text-gray-900 sm:text-3xl mb-5">
           Add Class
         </h2>
         <form onSubmit={handleAddClass}>
@@ -155,9 +157,23 @@ const AddClass = () => {
               </label>
             </div>
           </div>
-          {/* form image row */}
-          <div className="mb-5">
-            <div className="form-control w-full">
+          {/* form class image and instructor image row */}
+          <div className="md:flex gap-5 mb-5">
+            <div className="form-control md:w-1/2">
+              <label className="label">
+                <span className="label-text">Instructor Image</span>
+              </label>
+              <label>
+                <input
+                  type="text"
+                  name="instructorImage"
+                  readOnly
+                  defaultValue={user?.photoURL}
+                  className="input input-bordered w-full text-gray-500 cursor-not-allowed"
+                />
+              </label>
+            </div>
+            <div className="form-control md:w-1/2">
               <label className="label">
                 <span className="label-text">Class Image</span>
               </label>

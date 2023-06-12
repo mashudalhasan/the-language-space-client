@@ -167,7 +167,7 @@ const Dashboard = () => {
 
               {/* student menu */}
 
-              {(isStudent && !isAdmin && !isInstructor) && (
+              {(isStudent || user) && !isAdmin && !isInstructor && (
                 <>
                   <li>
                     <NavLink
