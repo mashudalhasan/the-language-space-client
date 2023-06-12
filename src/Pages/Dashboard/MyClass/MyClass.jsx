@@ -2,10 +2,15 @@ import { Helmet } from "react-helmet-async";
 import useClass from "../../../hooks/useClass";
 import { Link } from "react-router-dom";
 import { FaEdit } from "react-icons/fa";
+import useAuth from "../../../hooks/useAuth";
 
 const MyClass = () => {
+  const { user } = useAuth();
   const [classes] = useClass();
-  const myClasses = classes.filter((sort) => sort.instructor_name);
+  const myClasses = classes.filter(
+    (sort) => sort.instructor_email === user?.email
+  );
+  console.log(myClasses);
   return (
     <div>
       <Helmet>
@@ -37,21 +42,21 @@ const MyClass = () => {
                   <div className="flex items-center space-x-3">
                     <div className="avatar">
                       <div className="mask mask-squircle w-12 h-12">
-                        <img src={item.class_image} alt="Class Image" />
+                        <img src={item?.class_image} alt="Class Image" />
                       </div>
                     </div>
                     <div>
-                      <div className="font-bold">{item.class_name}</div>
+                      <div className="font-bold">{item?.class_name}</div>
                     </div>
                   </div>
                 </td>
-                <td>{item.number_of_students}</td>
+                <td>{item?.number_of_students}</td>
                 <td>
                   <div
                     className={`badge badge-sm ${
-                      item.status === "Approved"
+                      item?.status === "Approved"
                         ? "bg-green-100 text-green-600"
-                        : item.status === "Denied"
+                        : item?.status === "Denied"
                         ? "bg-red-100 text-red-600"
                         : "bg-gray-100 text-gray-600"
                     }`}

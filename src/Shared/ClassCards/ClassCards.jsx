@@ -1,4 +1,3 @@
-import cardImg from "../../assets/banner/spanish.jpg";
 import {
   FaChair,
   FaDollarSign,
@@ -14,7 +13,7 @@ const ClassCards = ({ item }) => {
     <div className="relative block overflow-hidden rounded-lg shadow-md">
       <span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500"></span>
       <div>
-        <img src={cardImg} alt="" className="rounded-t-lg" />
+        <img src={class_image} alt="" className="rounded-t-lg" />
       </div>
       <a className="block rounded-b-xl bg-white p-4 sm:p-6 lg:p-8" href="">
         <div>

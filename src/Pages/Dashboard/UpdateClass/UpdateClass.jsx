@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 const UpdateClass = () => {
   const { user } = useAuth();
   const uniqueClass = useLoaderData();
+  console.log(uniqueClass);
 
   const { _id, class_name, class_image, price, available_seats } = uniqueClass;
 

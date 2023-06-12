@@ -5,7 +5,20 @@ import useClass from "../../../hooks/useClass";
 
 const PopularClasses = () => {
   const [classes] = useClass();
-  const popular = classes.filter((item) => item.category === "popular");
+
+  // Use reduce to create an object where the keys are class IDs and the values are the corresponding classes
+  const uniqueClasses = classes.reduce((acc, classItem) => {
+    if (!acc[classItem.instructor_name]) {
+      acc[classItem.instructor_name] = classItem;
+    }
+    return acc;
+  }, {});
+
+  // Get an array of the unique classes
+  const popularClasses = Object.values(uniqueClasses);
+
+  // Sort the classes based on a specific criterion (e.g., number_of_students) in descending order
+  popularClasses.sort((a, b) => b.number_of_students - a.number_of_students);
 
   return (
     <section className="bg-circle pt-10">
@@ -15,7 +28,7 @@ const PopularClasses = () => {
           subheading={"Explore your dream classes"}
         ></SectionTitle>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-3/4 mx-auto">
-          {popular.map((item) => (
+          {popularClasses.map((item) => (
             <ClassCards key={item._id} item={item}></ClassCards>
           ))}
         </div>
