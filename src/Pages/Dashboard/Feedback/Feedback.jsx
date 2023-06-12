@@ -1,9 +1,47 @@
-const Feedback = ({ setShowModal }) => {
+import Swal from "sweetalert2";
+
+const Feedback = ({ singleClass, setShowModal, refetch }) => {
+  console.log(singleClass);
+
+  const handleSendFeedback = (event, id) => {
+    event.preventDefault();
+
+    const form = event.target;
+    const feedback = form.feedback.value;
+    console.log(feedback);
+
+    const payload = {
+      feedback: feedback,
+    };
+
+    fetch(`http://localhost:5000/classes/feedback/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify(payload),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Feedback Sent Successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
+
   return (
     <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none backdrop-blur-sm">
       <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="rounded-lg bg-white p-8 shadow-md lg:p-12">
-          <form className="space-y-4">
+          <form
+            onSubmit={() => handleSendFeedback(singleClass._id)}
+            className="space-y-4"
+          >
             <div>
               <h2 className="text-xl font-semibold tracking-tighter text-gray-900 sm:text-3xl">
                 Feedback Form
@@ -11,15 +49,16 @@ const Feedback = ({ setShowModal }) => {
             </div>
 
             <div>
-              <label className="sr-only" htmlFor="message">
-                Message
+              <label className="sr-only" htmlFor="feedback">
+                Feedback
               </label>
 
               <textarea
                 className="w-full rounded-lg border-gray-200 p-3 text-sm"
-                placeholder="Message"
+                placeholder="Write your feedback here..."
                 rows="8"
-                id="message"
+                name="feedback"
+                id="feedback"
               ></textarea>
             </div>
 

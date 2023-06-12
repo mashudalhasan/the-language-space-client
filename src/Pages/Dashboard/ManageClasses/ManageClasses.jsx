@@ -2,14 +2,12 @@ import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
-import { Suspense, lazy, useState } from "react";
+import { useState } from "react";
+import Feedback from "../Feedback/Feedback";
 
 const ManageClasses = () => {
   const [axiosSecure] = useAxiosSecure();
   const [showModal, setShowModal] = useState(false);
-
-  // Lazy load the modal component
-  const FeedbackModal = lazy(() => import("../Feedback/Feedback"));
 
   const { data: classes = [], refetch } = useQuery(["classes"], async () => {
     const res = await axiosSecure.get("/classes");
@@ -143,9 +141,11 @@ const ManageClasses = () => {
                     </button>
                   </div>
                   {showModal && (
-                    <Suspense fallback={<div>Loading...</div>}>
-                      <FeedbackModal setShowModal={setShowModal} />
-                    </Suspense>
+                    <Feedback
+                      singleClass={singleClass}
+                      setShowModal={setShowModal}
+                      refetch={refetch}
+                    />
                   )}
                 </td>
               </tr>

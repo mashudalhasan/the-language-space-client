@@ -6,10 +6,12 @@ import useAuth from "../../hooks/useAuth";
 import useAdmin from "../../hooks/useAdmin";
 import { Grid } from "react-loader-spinner";
 import useInstructor from "../../hooks/useInstructor";
+import useStudent from "../../hooks/useStudent";
 
 const AllClasses = ({ item }) => {
   const [isAdmin, isAdminLoading] = useAdmin();
   const [isInstructor, isInstructorLoading] = useInstructor();
+  const [isStudent, isStudentLoading] = useStudent();
   const {
     class_name,
     class_image,
@@ -25,7 +27,7 @@ const AllClasses = ({ item }) => {
 
   const handleAddToCart = (item) => {
     console.log(item);
-    if (user && user.email) {
+    if ((user && user.email) || isStudent) {
       const cartItem = {
         itemId: _id,
         class_name,
@@ -71,7 +73,7 @@ const AllClasses = ({ item }) => {
     }
   };
 
-  if (isAdminLoading || isInstructorLoading) {
+  if (isAdminLoading || isInstructorLoading || isStudentLoading) {
     // Render a loading state while checking the user's admin/instructor status
     return (
       <div className="h-screen flex justify-center items-center">
@@ -90,11 +92,17 @@ const AllClasses = ({ item }) => {
   }
 
   return (
-    <div className="block rounded-lg p-4 shadow-md">
+    <div
+      className={`block rounded-lg p-4 shadow-md ${
+        item.status === "Pending" ? "bg-base-200" : ""
+      } ${isStudent && item.status === "Pending" ? "hidden" : ""}`}
+    >
       <img
         alt="Class"
         src={class_image}
-        className="h-96 w-full rounded-md object-cover"
+        className={`h-96 w-full rounded-md object-cover ${
+          item.status === "Pending" ? "grayscale opacity-50" : ""
+        }`}
       />
 
       <div className="flex flex-col mt-2">
