@@ -59,7 +59,9 @@ const AddClass = () => {
       {/* content */}
 
       <div className="bg-base-100 p-8 rounded-md shadow-md">
-        <h2 className="text-3xl font-extrabold mb-8">Add Class</h2>
+        <h2 className="text-xl text-center font-semibold tracking-tighter text-gray-900 sm:text-3xl">
+          Add Class
+        </h2>
         <form onSubmit={handleAddClass}>
           {/* form seller name and email row */}
           <div className="md:flex gap-5 mb-5">
