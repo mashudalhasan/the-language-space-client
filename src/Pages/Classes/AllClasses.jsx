@@ -94,14 +94,14 @@ const AllClasses = ({ item }) => {
   return (
     <div
       className={`block rounded-lg p-4 shadow-md ${
-        item.status === "Pending" ? "bg-base-200" : ""
+        item.status === "Pending" ? "bg-red-50" : ""
       } ${isStudent && item.status === "Pending" ? "hidden" : ""}`}
     >
       <img
         alt="Class"
         src={class_image}
         className={`h-96 w-full rounded-md object-cover ${
-          item.status === "Pending" ? "grayscale opacity-50" : ""
+          item.status === "Pending" ? "opacity-50" : ""
         }`}
       />
 
@@ -148,6 +148,10 @@ const AllClasses = ({ item }) => {
             disabled={isAdmin || isInstructor}
             className={`rounded-lg bg-red-500 px-8 py-3 transition text-sm font-medium w-full mx-auto text-center text-white ${
               isAdmin || isInstructor
+                ? "opacity-50 cursor-not-allowed"
+                : "hover:shadow-md active:bg-red-400"
+            } ${
+              isStudent && item.status === "Pending"
                 ? "opacity-50 cursor-not-allowed"
                 : "hover:shadow-md active:bg-red-400"
             }`}

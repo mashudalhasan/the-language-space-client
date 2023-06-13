@@ -9,7 +9,8 @@
     "number_of_classes_taken_by_instructor": 10,
     "available_seats": 5,
     "price": 50,
-    "status": "Pending"
+    "status": "Pending",
+    "role": "student"
   },
   {
     "class_name": "French for Kids",
@@ -21,7 +22,8 @@
     "number_of_classes_taken_by_instructor": 5,
     "available_seats": 10,
     "price": 40,
-    "status": "Pending"
+    "status": "Pending",
+    "role": "student"
   },
   {
     "class_name": "German for Kids",
@@ -33,7 +35,8 @@
     "number_of_classes_taken_by_instructor": 3,
     "available_seats": 7,
     "price": 45,
-    "status": "Pending"
+    "status": "Pending",
+    "role": "student"
   },
   {
     "class_name": "Mandarin for Kids",
@@ -45,7 +48,8 @@
     "number_of_classes_taken_by_instructor": 6,
     "available_seats": 3,
     "price": 55,
-    "status": "Pending"
+    "status": "Pending",
+    "role": "student"
   },
   {
     "class_name": "Italian for Kids",
@@ -57,7 +61,8 @@
     "number_of_classes_taken_by_instructor": 2,
     "available_seats": 9,
     "price": 35,
-    "status": "Pending"
+    "status": "Pending",
+    "role": "student"
   },
   {
     "class_name": "Japanese for Kids",
@@ -69,7 +74,8 @@
     "number_of_classes_taken_by_instructor": 8,
     "available_seats": 2,
     "price": 60,
-    "status": "Pending"
+    "status": "Pending",
+    "role": "student"
   },
   {
     "class_name": "Arabic for Kids",
@@ -81,7 +87,8 @@
     "number_of_classes_taken_by_instructor": 4,
     "available_seats": 10,
     "price": 45,
-    "status": "Pending"
+    "status": "Pending",
+    "role": "student"
   },
   {
     "class_name": "Russian for Kids",
@@ -93,7 +100,8 @@
     "number_of_classes_taken_by_instructor": 2,
     "available_seats": 8,
     "price": 50,
-    "status": "Pending"
+    "status": "Pending",
+    "role": "student"
   },
   {
     "class_name": "Portuguese for Kids",
@@ -105,7 +113,8 @@
     "number_of_classes_taken_by_instructor": 6,
     "available_seats": 2,
     "price": 55,
-    "status": "Pending"
+    "status": "Pending",
+    "role": "student"
   },
   {
     "class_name": "Swahili for Kids",
@@ -116,7 +125,8 @@
     "number_of_classes_taken_by_instructor": 1,
     "available_seats": 7,
     "price": 40,
-    "status": "Pending"
+    "status": "Pending",
+    "role": "student"
   },
   {
     "class_name": "Korean for Kids",
@@ -128,7 +138,8 @@
     "number_of_classes_taken_by_instructor": 3,
     "available_seats": 4,
     "price": 60,
-    "status": "Pending"
+    "status": "Pending",
+    "role": "student"
   },
   {
     "class_name": "Hindi for Kids",
@@ -140,6 +151,7 @@
     "number_of_classes_taken_by_instructor": 2,
     "available_seats": 6,
     "price": 35,
-    "status": "Pending"
+    "status": "Pending",
+    "role": "student"
   }
 ]

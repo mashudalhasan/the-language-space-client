@@ -31,6 +31,7 @@ const SignUp = () => {
             name: data.name,
             email: data.email,
             photo: data.image,
+            role: "student",
           };
 
           fetch("http://localhost:5000/users", {
@@ -70,6 +71,7 @@ const SignUp = () => {
           name: loggedUser.displayName,
           email: loggedUser.email,
           photo: loggedUser.photoURL,
+          role: "student",
         };
 
         fetch("http://localhost:5000/users", {

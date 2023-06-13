@@ -76,9 +76,11 @@ const Navbar = () => {
         <li>
           <Link to="/dashboard">
             Dashboard
-            <div className="badge bg-red-500 text-white border-none">
-              {cart?.length || 0}
-            </div>
+            {user?.role === "student" && (
+              <div className="badge bg-red-500 text-white border-none">
+                {cart?.length || 0}
+              </div>
+            )}
           </Link>
         </li>
       )}

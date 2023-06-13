@@ -98,9 +98,6 @@ const Dashboard = () => {
                       <span className="text-base text-gray-700">
                         Manage Classes
                       </span>
-                      <div className="badge bg-red-500 text-white border-none">
-                        {cart?.length || 0}
-                      </div>
                     </NavLink>
                   </li>
                   <li>
@@ -140,9 +137,6 @@ const Dashboard = () => {
                         className="w-6 h-6 lg:w-8 lg:h-8"
                       />
                       <span className="text-base text-gray-700">Add Class</span>
-                      <div className="badge bg-red-500 text-white border-none">
-                        {cart?.length || 0}
-                      </div>
                     </NavLink>
                   </li>
                   <li>
