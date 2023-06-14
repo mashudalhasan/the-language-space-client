@@ -119,7 +119,7 @@ const AllClasses = ({ item }) => {
 
         <div className="mt-6 flex justify-between items-center  text-xs">
           <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
-            <FaUserAlt className="h-5 w-5 text-red-500" />
+            <FaUserAlt className="h-5 w-5 text-green-500" />
             <div className="mt-1.5 sm:mt-0">
               <p className="text-gray-500">Instructor</p>
 
@@ -128,7 +128,7 @@ const AllClasses = ({ item }) => {
           </div>
 
           <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
-            <FaChair className="h-5 w-5 text-red-500" />
+            <FaChair className="h-5 w-5 text-green-500" />
             <div className="mt-1.5 sm:mt-0">
               <p className="text-gray-500">Available Seats</p>
 
@@ -137,7 +137,7 @@ const AllClasses = ({ item }) => {
           </div>
 
           <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
-            <FaDollarSign className="h-5 w-5 text-red-500" />
+            <FaDollarSign className="h-5 w-5 text-green-500" />
             <div className="mt-1.5 sm:mt-0">
               <p className="text-gray-500">Price</p>
 
@@ -149,7 +149,7 @@ const AllClasses = ({ item }) => {
           <button
             onClick={() => handleAddToCart(item)}
             disabled={item?.role === "admin" || item?.role === "instructor"}
-            className={`rounded-lg bg-red-500 px-8 py-3 transition text-sm font-medium w-full mx-auto text-center text-white ${
+            className={`rounded-lg bg-green-500 px-8 py-3 transition text-sm font-medium w-full mx-auto text-center text-white ${
               isAdmin || isInstructor
                 ? "opacity-50 cursor-not-allowed"
                 : "hover:shadow-md active:bg-red-400"

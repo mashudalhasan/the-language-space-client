@@ -190,7 +190,7 @@ const AddClass = () => {
 
           <button
             type="submit"
-            className="w-full cursor-pointer rounded-md bg-red-100 py-3 px-5 text-base text-red-500 font-semibold transition active:bg-red-200"
+            className="w-full cursor-pointer rounded-md bg-red-100 py-3 px-5 text-base text-green-500 font-semibold transition active:bg-red-200"
           >
             Add Class
           </button>

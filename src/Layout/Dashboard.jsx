@@ -78,7 +78,7 @@ const Dashboard = () => {
               <Link to="/">
                 <div className="flex justify-start items-center gap-2 ml-4">
                   <img src={logo} alt="" className="h-8" />
-                  <p className="normal-case text-sm lg:text-xl tracking-tighter font-bold text-red-500">
+                  <p className="normal-case text-sm lg:text-xl tracking-tighter font-bold text-green-500">
                     The Language Space
                   </p>
                 </div>
@@ -102,7 +102,7 @@ const Dashboard = () => {
                           className="w-6 h-6 lg:w-8 lg:h-8"
                         />
                         <span className="text-base text-gray-700">My Cart</span>
-                        <div className="badge bg-red-500 text-white border-none">
+                        <div className="badge bg-green-500 text-white border-none">
                           {cart?.length || 0}
                         </div>
                       </NavLink>

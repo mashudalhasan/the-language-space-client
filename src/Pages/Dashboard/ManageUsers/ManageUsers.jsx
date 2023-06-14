@@ -165,7 +165,7 @@ const ManageUsers = () => {
                 <td>
                   <button
                     onClick={() => handleDelete(user)}
-                    className="text-gray-600 transition hover:text-red-500"
+                    className="text-gray-600 transition hover:text-green-500"
                   >
                     <span className="sr-only">Remove item</span>
 

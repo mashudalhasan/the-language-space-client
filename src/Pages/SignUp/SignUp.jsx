@@ -121,7 +121,7 @@ const SignUp = () => {
                   data-temp-mail-org="0"
                 />
                 {errors.name && (
-                  <span className="text-sm text-red-500">Name is required</span>
+                  <span className="text-sm text-green-500">Name is required</span>
                 )}
               </div>
               <div>
@@ -138,7 +138,7 @@ const SignUp = () => {
                   data-temp-mail-org="0"
                 />
                 {errors.name && (
-                  <span className="text-sm text-red-500">
+                  <span className="text-sm text-green-500">
                     Image is required
                   </span>
                 )}
@@ -169,7 +169,7 @@ const SignUp = () => {
                   data-temp-mail-org="0"
                 />
                 {errors.email && (
-                  <span className="text-sm text-red-500">
+                  <span className="text-sm text-green-500">
                     Email is required
                   </span>
                 )}
@@ -194,20 +194,20 @@ const SignUp = () => {
                   className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-red-500 bg-gray-200 text-gray-900"
                 />
                 {errors.password?.type === "required" && (
-                  <p className="text-red-500 text-sm">Password is required</p>
+                  <p className="text-green-500 text-sm">Password is required</p>
                 )}
                 {errors.password?.type === "maxLength" && (
-                  <p className="text-red-500 text-sm">
+                  <p className="text-green-500 text-sm">
                     Password must less than 20 characters
                   </p>
                 )}
                 {errors.password?.type === "minLength" && (
-                  <p className="text-red-500 text-sm">
+                  <p className="text-green-500 text-sm">
                     Password must be 6 characters
                   </p>
                 )}
                 {errors.password?.type === "pattern" && (
-                  <p className="text-red-500 text-sm">
+                  <p className="text-green-500 text-sm">
                     Password must have one uppercase, one lowercase, one number
                     and one special character.
                   </p>
@@ -218,7 +218,7 @@ const SignUp = () => {
             <div>
               <button
                 type="submit"
-                className="bg-red-500 w-full rounded-md py-3 text-white cursor-pointer active:bg-red-600"
+                className="bg-green-500 w-full rounded-md py-3 text-white cursor-pointer active:bg-red-600"
               >
                 Continue
               </button>

@@ -103,7 +103,7 @@ const Login = () => {
               <input
                 type="submit"
                 value="Continue"
-                className="bg-red-500 w-full rounded-md py-3 text-white cursor-pointer active:bg-red-600"
+                className="bg-green-500 w-full rounded-md py-3 text-white cursor-pointer active:bg-red-600"
               ></input>
             </div>
           </form>
@@ -128,7 +128,7 @@ const Login = () => {
             Don&apos;t have an account yet?{" "}
             <Link
               to="/signup"
-              className="hover:underline hover:text-red-500 text-gray-600"
+              className="hover:underline hover:text-green-500 text-gray-600"
             >
               Sign up
             </Link>

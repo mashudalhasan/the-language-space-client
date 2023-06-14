@@ -17,7 +17,7 @@ const InstructorCards = ({ instructor }) => {
         />
 
         <div className="relative p-4 sm:p-6 lg:p-8">
-          <p className="text-sm font-medium uppercase tracking-widest text-red-500">
+          <p className="text-sm font-medium uppercase tracking-widest text-green-500">
             Instructor
           </p>
 

@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="flex justify-center items-center gap-3">
           <img src={logo} alt="" className="h-8" />
-          <p className="normal-case text-md lg:text-xl tracking-tighter whitespace-nowrap font-bold text-red-500">
+          <p className="normal-case text-md lg:text-xl tracking-tighter whitespace-nowrap font-bold text-green-500">
             The Language Space
           </p>
         </div>

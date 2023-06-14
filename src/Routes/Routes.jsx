@@ -19,11 +19,13 @@ import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../Pages/PaymentHistory/PaymentHistory";
+import ErrorPage from "../Shared/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -62,6 +64,7 @@ const router = createBrowserRouter([
         <Dashboard></Dashboard>
       </PrivateRoute>
     ),
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "mycart",

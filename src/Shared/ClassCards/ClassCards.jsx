@@ -27,7 +27,7 @@ const ClassCards = ({ item }) => {
         <div className="mt-6 flex justify-between items-center text-xs">
           <div className="flex items-center gap-3">
             <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
-              <FaChair className="h-4 w-4 text-red-500" />
+              <FaChair className="h-4 w-4 text-green-500" />
               <div className="mt-1.5 sm:mt-0">
                 <p className="text-gray-500">Available Seats</p>
 
@@ -35,7 +35,7 @@ const ClassCards = ({ item }) => {
               </div>
             </div>
             <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
-              <FaDollarSign className="h-4 w-4 text-red-500" />
+              <FaDollarSign className="h-4 w-4 text-green-500" />
               <div className="mt-1.5 sm:mt-0">
                 <p className="text-gray-500">Price</p>
 
@@ -44,7 +44,7 @@ const ClassCards = ({ item }) => {
             </div>
           </div>
           <div>
-            <FaRegArrowAltCircleRight className="h-8 w-8 text-red-500" />
+            <FaRegArrowAltCircleRight className="h-8 w-8 text-green-500" />
           </div>
         </div>
       </a>

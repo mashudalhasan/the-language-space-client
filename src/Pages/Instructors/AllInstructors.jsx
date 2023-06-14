@@ -28,7 +28,7 @@ const AllInstructors = ({ instructor }) => {
 
         <div className="mt-6 flex items-center gap-8 text-xs">
           <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
-            <FaUserAlt className="h-5 w-5 text-red-500" />
+            <FaUserAlt className="h-5 w-5 text-green-500" />
             <div className="mt-1.5 sm:mt-0">
               <p className="text-gray-500">Email</p>
 
@@ -37,7 +37,7 @@ const AllInstructors = ({ instructor }) => {
           </div>
 
           <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
-            <FaChalkboardTeacher className="h-5 w-5 text-red-500" />
+            <FaChalkboardTeacher className="h-5 w-5 text-green-500" />
             <div className="mt-1.5 sm:mt-0">
               <p className="text-gray-500">No of Class</p>
 
@@ -49,7 +49,7 @@ const AllInstructors = ({ instructor }) => {
         </div>
         <div className="flex-grow mt-8">
           <Link to="/">
-            <button className="rounded-lg bg-red-500 px-8 py-3 transition hover:shadow-md active:bg-red-400 text-sm font-medium w-full mx-auto text-center text-white">
+            <button className="rounded-lg bg-green-500 px-8 py-3 transition hover:shadow-md active:bg-red-400 text-sm font-medium w-full mx-auto text-center text-white">
               See Classes
             </button>
           </Link>

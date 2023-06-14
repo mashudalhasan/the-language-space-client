@@ -78,7 +78,7 @@ const MyCart = () => {
 
                     <button
                       onClick={() => handleDelete(item)}
-                      className="text-gray-600 transition hover:text-red-500"
+                      className="text-gray-600 transition hover:text-green-500"
                     >
                       <span className="sr-only">Remove item</span>
 
@@ -135,7 +135,7 @@ const MyCart = () => {
                 <div className="flex justify-end">
                   <Link
                     to="/dashboard/payment"
-                    className="block rounded-md bg-red-500 px-5 py-3 text-sm text-white transition hover:bg-opacity-90 active:bg-red-600"
+                    className="block rounded-md bg-green-500 px-5 py-3 text-sm text-white transition hover:bg-opacity-90 active:bg-red-600"
                   >
                     Checkout
                   </Link>

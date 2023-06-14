@@ -79,7 +79,7 @@ const Navbar = () => {
           <Link to="/dashboard">
             Dashboard
             {isStudent && (
-              <div className="badge bg-red-500 text-white border-none">
+              <div className="badge bg-green-500 text-white border-none">
                 {cart?.length || 0}
               </div>
             )}
@@ -90,7 +90,7 @@ const Navbar = () => {
         <li>
           <button
             onClick={handleLogOut}
-            className="bg-red-500 w-full rounded-md py-2 px-3 text-white font-semibold tracking-wide bg-btn"
+            className="bg-green-500 w-full rounded-md py-2 px-3 text-white font-semibold tracking-wide bg-btn"
           >
             Logout
           </button>
@@ -104,7 +104,7 @@ const Navbar = () => {
         <div className="dropdown z-10">
           <label
             tabIndex={0}
-            className="btn bg-transparent border-none lg:hidden text-red-600"
+            className="btn bg-transparent border-none lg:hidden text-green-600"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -139,7 +139,7 @@ const Navbar = () => {
         <Link to="/">
           <div className="lg:flex justify-center items-center gap-2">
             <img src={logo} alt="" className="h-8 hidden lg:block" />
-            <p className="normal-case text-sm lg:text-xl tracking-tighter font-bold text-red-500">
+            <p className="normal-case text-sm lg:text-xl tracking-tighter font-bold text-green-500">
               The Language Space
             </p>
           </div>
@@ -175,7 +175,7 @@ const Navbar = () => {
           </span>
         ) : (
           <Link to="/login">
-            <button className="bg-red-500 w-full rounded-md py-2 px-3 text-white font-semibold tracking-wide">
+            <button className="bg-green-500 w-full rounded-md py-2 px-3 text-white font-semibold tracking-wide">
               Login
             </button>
           </Link>

@@ -63,7 +63,7 @@ const Feedback = ({ singleClass, setShowModal, refetch }) => {
             <div className="mt-4 flex justify-start items-center gap-4">
               <button
                 type="submit"
-                className="inline-block w-full rounded-lg bg-red-100 active:bg-red-200 px-5 py-3 font-medium text-red-500 sm:w-auto"
+                className="inline-block w-full rounded-lg bg-red-100 active:bg-red-200 px-5 py-3 font-medium text-green-500 sm:w-auto"
               >
                 Send Feedback
               </button>
