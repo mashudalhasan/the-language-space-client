@@ -63,11 +63,11 @@ const MyCart = () => {
                   />
 
                   <div>
-                    <h3 className="text-sm text-gray-900">{item.class_name}</h3>
+                    <h3 className="text-sm font-medium text-gray-900">{item.class_name}</h3>
 
-                    <dl className="mt-0.5 space-y-px text-[10px] text-gray-600">
+                    <dl className="mt-0.5 space-y-px text-[12px] text-gray-600">
                       <div>
-                        <dt className="inline">Instructor:</dt>
+                        <dt className="inline">Instructor: </dt>
                         <dd className="inline">{item.instructor_name}</dd>
                       </div>
                     </dl>

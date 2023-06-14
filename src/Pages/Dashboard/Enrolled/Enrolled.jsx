@@ -15,7 +15,7 @@ const Enrolled = () => {
       </h2>
 
       <div>
-        <div className="overflow-x-auto mt-14 rounded-md shadow-md">
+        <div className="overflow-x-auto mt-14 rounded-md shadow-md text-gray-500">
           <table className="table">
             {/* head */}
             <thead className="bg-base-200">
@@ -56,7 +56,7 @@ const Enrolled = () => {
                   <td>
                     {enroll?.instructor_name}
                     <br />
-                    <span className="badge badge-ghost badge-sm">
+                    <span className="badge badge-ghost badge-sm text-gray-500">
                       {enroll?.instructor_email}
                     </span>
                   </td>
