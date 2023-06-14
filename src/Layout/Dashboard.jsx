@@ -21,9 +21,9 @@ const Dashboard = () => {
   const [cart] = useCart();
   const navigate = useNavigate();
 
-  const [isAdmin] = useAdmin();
-  const [isInstructor] = useInstructor();
-  const [isStudent] = useStudent();
+  const [isAdmin, isAdminLoading] = useAdmin();
+  const [isInstructor, isInstructorLoading] = useInstructor();
+  const [isStudent, isStudentLoading] = useStudent();
 
   const handleLogOut = () => {
     logOut()
@@ -79,9 +79,66 @@ const Dashboard = () => {
             </Link>
 
             <div className="mt-6 ml-2 space-y-2">
+              {/* student menu */}
+
+              {isStudent && !isStudentLoading && (
+                <>
+                  <li>
+                    <NavLink
+                      to="/dashboard/mycart"
+                      className={({ isActive }) =>
+                        isActive ? "bg-base-200 font-semibold" : ""
+                      }
+                    >
+                      <img
+                        src={cartIcon}
+                        alt=""
+                        className="w-6 h-6 lg:w-8 lg:h-8"
+                      />
+                      <span className="text-base text-gray-700">My Cart</span>
+                      <div className="badge bg-red-500 text-white border-none">
+                        {cart?.length || 0}
+                      </div>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/dashboard/enrolled"
+                      className={({ isActive }) =>
+                        isActive ? "bg-base-200 font-semibold" : ""
+                      }
+                    >
+                      <img
+                        src={bookingIcon}
+                        alt=""
+                        className="w-6 h-6 lg:w-8 lg:h-8"
+                      />
+                      <span className="text-base text-gray-700">Enrolled</span>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/dashboard/paymenthistory"
+                      className={({ isActive }) =>
+                        isActive ? "bg-base-200 font-semibold" : ""
+                      }
+                    >
+                      <img
+                        src={walletIcon}
+                        alt=""
+                        className="w-6 h-6 lg:w-8 lg:h-8"
+                      />
+                      <span className="text-base text-gray-700">
+                        Payment History
+                      </span>
+                    </NavLink>
+                  </li>
+                </>
+              )}
+
               {/* admin menu */}
 
-              {isAdmin && (
+              {isAdmin && !isAdminLoading && (
                 <>
                   <li>
                     <NavLink
@@ -122,7 +179,7 @@ const Dashboard = () => {
 
               {/* instructor menu */}
 
-              {isInstructor && (
+              {isInstructor && !isInstructorLoading && (
                 <>
                   <li>
                     <NavLink
@@ -152,63 +209,6 @@ const Dashboard = () => {
                         className="w-6 h-6 lg:w-8 lg:h-8"
                       />
                       <span className="text-base text-gray-700">My Class</span>
-                    </NavLink>
-                  </li>
-                </>
-              )}
-
-              {/* student menu */}
-
-              {(isStudent || user) && !isAdmin && !isInstructor && (
-                <>
-                  <li>
-                    <NavLink
-                      to="/dashboard/mycart"
-                      className={({ isActive }) =>
-                        isActive ? "bg-base-200 font-semibold" : ""
-                      }
-                    >
-                      <img
-                        src={cartIcon}
-                        alt=""
-                        className="w-6 h-6 lg:w-8 lg:h-8"
-                      />
-                      <span className="text-base text-gray-700">My Cart</span>
-                      <div className="badge bg-red-500 text-white border-none">
-                        {cart?.length || 0}
-                      </div>
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/dashboard/enrolled"
-                      className={({ isActive }) =>
-                        isActive ? "bg-base-200 font-semibold" : ""
-                      }
-                    >
-                      <img
-                        src={bookingIcon}
-                        alt=""
-                        className="w-6 h-6 lg:w-8 lg:h-8"
-                      />
-                      <span className="text-base text-gray-700">Enrolled</span>
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/dashboard/historypay"
-                      className={({ isActive }) =>
-                        isActive ? "bg-base-200 font-semibold" : ""
-                      }
-                    >
-                      <img
-                        src={walletIcon}
-                        alt=""
-                        className="w-6 h-6 lg:w-8 lg:h-8"
-                      />
-                      <span className="text-base text-gray-700">
-                        Payment History
-                      </span>
                     </NavLink>
                   </li>
                 </>

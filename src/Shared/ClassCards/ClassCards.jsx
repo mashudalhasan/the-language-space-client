@@ -13,9 +13,9 @@ const ClassCards = ({ item }) => {
     <div className="relative block overflow-hidden rounded-lg shadow-md">
       <span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500"></span>
       <div>
-        <img src={class_image} alt="" className="rounded-t-lg" />
+        <img src={class_image} alt="" className="rounded-t-lg h-96 w-full object-cover" />
       </div>
-      <a className="block rounded-b-xl bg-white p-4 sm:p-6 lg:p-8" href="">
+      <a className="block bg-white p-4 sm:p-6 lg:p-8" href="">
         <div>
           <h3 className="text-lg font-bold text-gray-900 sm:text-xl">
             {class_name}

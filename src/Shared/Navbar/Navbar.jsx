@@ -8,10 +8,12 @@ import { Tooltip } from "react-tippy";
 import placeholder from "../../assets/others/Portrait_Placeholder_Square.png";
 import "./Navbar.css";
 import useCart from "../../hooks/useCart";
+import useStudent from "../../hooks/useStudent";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [cart] = useCart();
+  const [isStudent] = useStudent();
   // use theme from local storage if available or set light theme
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
@@ -76,7 +78,7 @@ const Navbar = () => {
         <li>
           <Link to="/dashboard">
             Dashboard
-            {user?.role === "student" && (
+            {isStudent && (
               <div className="badge bg-red-500 text-white border-none">
                 {cart?.length || 0}
               </div>

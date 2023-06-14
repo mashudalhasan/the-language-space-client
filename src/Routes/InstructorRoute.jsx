@@ -1,11 +1,11 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { Grid } from "react-loader-spinner";
 import useAuth from "../hooks/useAuth";
-import useAdmin from "../hooks/useAdmin";
+import useInstructor from "../hooks/useInstructor";
 
 const InstructorRoute = ({ children }) => {
   const { user, loading } = useAuth();
-  const [isInstructor, isInstructorLoading] = useAdmin();
+  const [isInstructor, isInstructorLoading] = useInstructor();
   const location = useLocation();
 
   if (loading || isInstructorLoading) {

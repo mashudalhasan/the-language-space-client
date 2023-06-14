@@ -1,22 +1,20 @@
 import Swal from "sweetalert2";
 
 const Feedback = ({ singleClass, setShowModal, refetch }) => {
-  console.log(singleClass);
-
-  const handleSendFeedback = (event, id) => {
+  const handleSendFeedback = (event, singleClass) => {
+    console.log(singleClass);
     event.preventDefault();
 
     const form = event.target;
-    const feedback = form.feedback.value;
+    const feedback = form.elements.feedback.value;
     console.log(feedback);
 
-    const payload = {
-      feedback: feedback,
-    };
-
-    fetch(`http://localhost:5000/classes/feedback/${id}`, {
+    fetch(`http://localhost:5000/classes/feedback/${singleClass._id}`, {
       method: "PATCH",
-      body: JSON.stringify(payload),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ feedback }),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -39,7 +37,7 @@ const Feedback = ({ singleClass, setShowModal, refetch }) => {
       <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="rounded-lg bg-white p-8 shadow-md lg:p-12">
           <form
-            onSubmit={() => handleSendFeedback(singleClass._id)}
+            onSubmit={(event) => handleSendFeedback(event, singleClass)}
             className="space-y-4"
           >
             <div>

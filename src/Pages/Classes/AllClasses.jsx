@@ -3,15 +3,12 @@ import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import useCart from "../../hooks/useCart";
 import useAuth from "../../hooks/useAuth";
-import useAdmin from "../../hooks/useAdmin";
 import { Grid } from "react-loader-spinner";
-import useInstructor from "../../hooks/useInstructor";
 import useStudent from "../../hooks/useStudent";
+import useAdmin from "../../hooks/useAdmin";
+import useInstructor from "../../hooks/useInstructor";
 
 const AllClasses = ({ item }) => {
-  const [isAdmin, isAdminLoading] = useAdmin();
-  const [isInstructor, isInstructorLoading] = useInstructor();
-  const [isStudent, isStudentLoading] = useStudent();
   const {
     class_name,
     class_image,
@@ -20,14 +17,18 @@ const AllClasses = ({ item }) => {
     price,
     _id,
   } = item;
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const [, refetch] = useCart();
   const navigate = useNavigate();
   const location = useLocation();
+  const [isStudent] = useStudent();
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
 
   const handleAddToCart = (item) => {
     console.log(item);
-    if ((user && user.email) || isStudent) {
+    
+    if (isStudent) {
       const cartItem = {
         itemId: _id,
         class_name,
@@ -46,6 +47,7 @@ const AllClasses = ({ item }) => {
       })
         .then((res) => res.json())
         .then((data) => {
+          console.log(data);
           if (data.insertedId) {
             refetch();
             Swal.fire({
@@ -73,8 +75,7 @@ const AllClasses = ({ item }) => {
     }
   };
 
-  if (isAdminLoading || isInstructorLoading || isStudentLoading) {
-    // Render a loading state while checking the user's admin/instructor status
+  if (loading) {
     return (
       <div className="h-screen flex justify-center items-center">
         <Grid
@@ -95,7 +96,9 @@ const AllClasses = ({ item }) => {
     <div
       className={`block rounded-lg p-4 shadow-md ${
         item.status === "Pending" ? "bg-red-50" : ""
-      } ${isStudent && item.status === "Pending" ? "hidden" : ""}`}
+      } ${isStudent && item.status === "Pending" ? "hidden" : ""} ${
+        isStudent && item.status === "Denied" ? "hidden" : ""
+      }`}
     >
       <img
         alt="Class"
@@ -145,7 +148,7 @@ const AllClasses = ({ item }) => {
         <div className="flex-grow mt-8">
           <button
             onClick={() => handleAddToCart(item)}
-            disabled={isAdmin || isInstructor}
+            disabled={item?.role === "admin" || item?.role === "instructor"}
             className={`rounded-lg bg-red-500 px-8 py-3 transition text-sm font-medium w-full mx-auto text-center text-white ${
               isAdmin || isInstructor
                 ? "opacity-50 cursor-not-allowed"
@@ -156,7 +159,7 @@ const AllClasses = ({ item }) => {
                 : "hover:shadow-md active:bg-red-400"
             }`}
           >
-            Enroll
+            Enroll Now
           </button>
         </div>
       </div>

@@ -145,7 +145,7 @@ const UpdateClass = () => {
 
           <button
             type="submit"
-            className="w-full cursor-pointer rounded-md bg-info py-3 px-5 text-base text-white font-semibold transition hover:bg-opacity-90"
+            className="w-full cursor-pointer rounded-md bg-red-100 py-3 px-5 text-base text-red-500 font-semibold transition active:bg-red-200"
           >
             Update
           </button>

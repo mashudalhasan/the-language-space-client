@@ -7,7 +7,7 @@ import Feedback from "../Feedback/Feedback";
 
 const ManageClasses = () => {
   const [axiosSecure] = useAxiosSecure();
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(null);
 
   const { data: classes = [], refetch } = useQuery(["classes"], async () => {
     const res = await axiosSecure.get("/classes");
@@ -134,7 +134,7 @@ const ManageClasses = () => {
                       Deny
                     </button>
                     <button
-                      onClick={() => setShowModal(true)}
+                      onClick={() => setShowModal(singleClass._id)}
                       className="btn btn-ghost btn-xs normal-case"
                     >
                       Send Feedback
@@ -142,7 +142,7 @@ const ManageClasses = () => {
                   </div>
                   {showModal && (
                     <Feedback
-                      singleClass={singleClass}
+                      singleClass={showModal}
                       setShowModal={setShowModal}
                       refetch={refetch}
                     />
