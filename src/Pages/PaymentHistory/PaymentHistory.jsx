@@ -7,7 +7,7 @@ const PaymentHistory = () => {
   console.log(payment);
 
   return (
-    <div className="">
+    <div>
       <Helmet>
         <title>The Language Space | Payment History</title>
       </Helmet>

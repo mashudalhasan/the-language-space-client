@@ -3,6 +3,7 @@ import Banner from "../Banner/Banner";
 import PopularClasses from "../PopularClasses/PopularClasses";
 import PopularInstructors from "../PopularInstructors/PopularInstructors";
 import ParallaxSection from "../ParallaxSection/ParallaxSection";
+import Reviews from "../Reviews/Reviews";
 
 const Home = () => {
   return (
@@ -19,6 +20,9 @@ const Home = () => {
       </div>
       <div className="my-12">
         <ParallaxSection></ParallaxSection>
+      </div>
+      <div className="my-12">
+        <Reviews></Reviews>
       </div>
     </div>
   );

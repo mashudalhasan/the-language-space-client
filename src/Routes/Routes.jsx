@@ -7,7 +7,6 @@ import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import Dashboard from "../Layout/Dashboard";
 import PrivateRoute from "./PrivateRoute";
-import Secret from "../Pages/Secret/Secret";
 import MyCart from "../Pages/Dashboard/MyCart/MyCart";
 import Enrolled from "../Pages/Dashboard/Enrolled/Enrolled";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
@@ -20,6 +19,8 @@ import InstructorRoute from "./InstructorRoute";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../Pages/PaymentHistory/PaymentHistory";
 import ErrorPage from "../Shared/ErrorPage/ErrorPage";
+import About from "../Shared/About/About";
+import History from "../Shared/History/History";
 
 const router = createBrowserRouter([
   {
@@ -48,12 +49,12 @@ const router = createBrowserRouter([
         element: <SignUp></SignUp>,
       },
       {
-        path: "secret",
-        element: (
-          <PrivateRoute>
-            <Secret></Secret>
-          </PrivateRoute>
-        ),
+        path: "about",
+        element: <About></About>,
+      },
+      {
+        path: "history",
+        element: <History></History>,
       },
     ],
   },

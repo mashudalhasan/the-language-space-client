@@ -11,7 +11,7 @@ const ClassCards = ({ item }) => {
 
   return (
     <div className="relative block overflow-hidden rounded-lg shadow-md">
-      <span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500"></span>
+      <span className="absolute inset-x-0 bottom-0 h-2 bg-green-500"></span>
       <div>
         <img src={class_image} alt="" className="rounded-t-lg h-96 w-full object-cover" />
       </div>

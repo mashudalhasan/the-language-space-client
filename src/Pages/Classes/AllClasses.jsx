@@ -81,7 +81,7 @@ const AllClasses = ({ item }) => {
         <Grid
           height="80"
           width="80"
-          color="#EF4444"
+          color="#22C55E"
           ariaLabel="grid-loading"
           radius="12.5"
           wrapperStyle={{}}

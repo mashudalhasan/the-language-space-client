@@ -1,8 +1,12 @@
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
   return (
     <div className="w-full h-screen flex flex-col items-center justify-center">
+      <Helmet>
+        <title>The Language Space | Error</title>
+      </Helmet>
       <svg
         className="w-1/2 md:1/3 lg:w-1/4 text-green-500"
         xmlns="http://www.w3.org/2000/svg"

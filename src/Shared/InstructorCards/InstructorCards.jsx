@@ -28,7 +28,7 @@ const InstructorCards = ({ instructor }) => {
           <div className="mt-32 sm:mt-48 lg:mt-64">
             <div className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
               <div className="flex items-center gap-5">
-                <img src={classImg} alt="" className="w-10 h-10"/>
+                <img src={classImg} alt="" className="w-10 h-10 text-green-500"/>
                 <div className="text-white font-semibold">
                   <p>Number of Classes</p>
                   <p>{number_of_classes_taken_by_instructor}</p>
