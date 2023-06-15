@@ -1,4 +1,4 @@
-# <img src="/src/assets/logo.png" alt="logo" width="200" height="100"> The Language Space
+# <img src="/src/assets/logo.png" alt="logo" width="20" height="20"> The Language Space
 
 A simple React website built with full stack.
 
