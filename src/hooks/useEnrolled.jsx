@@ -5,7 +5,7 @@ const useEnrolled = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/enrolled")
+    fetch("https://the-language-space-server.vercel.app/enrolled")
       .then((res) => res.json())
       .then((data) => {
         setEnrolled(data);

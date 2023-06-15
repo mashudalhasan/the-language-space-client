@@ -9,7 +9,7 @@ const Feedback = ({ singleClass, setShowModal, refetch }) => {
     const feedback = form.elements.feedback.value;
     console.log(feedback);
 
-    fetch(`http://localhost:5000/classes/feedback/${singleClass._id}`, {
+    fetch(`https://the-language-space-server.vercel.app/classes/feedback/${singleClass._id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

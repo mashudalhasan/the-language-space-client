@@ -14,7 +14,7 @@ const ManageUsers = () => {
 
   //   make admin button
   const handleMakeAdmin = (user) => {
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
+    fetch(`https://the-language-space-server.vercel.app/users/admin/${user._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -35,7 +35,7 @@ const ManageUsers = () => {
 
   //   make Instructor button
   const handleMakeInstructor = (user) => {
-    fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+    fetch(`https://the-language-space-server.vercel.app/users/instructor/${user._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -56,7 +56,7 @@ const ManageUsers = () => {
 
   //   make Student button
   const handleMakeStudent = (user) => {
-    fetch(`http://localhost:5000/users/student/${user._id}`, {
+    fetch(`https://the-language-space-server.vercel.app/users/student/${user._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -86,7 +86,7 @@ const ManageUsers = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/users/${user._id}`, {
+        fetch(`https://the-language-space-server.vercel.app/users/${user._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

@@ -34,7 +34,7 @@ const SignUp = () => {
             role: "student",
           };
 
-          fetch("http://localhost:5000/users", {
+          fetch("https://the-language-space-server.vercel.app/users", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -74,7 +74,7 @@ const SignUp = () => {
           role: "student",
         };
 
-        fetch("http://localhost:5000/users", {
+        fetch("https://the-language-space-server.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

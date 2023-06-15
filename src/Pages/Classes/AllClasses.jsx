@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import useCart from "../../hooks/useCart";
 import useAuth from "../../hooks/useAuth";
-import { Grid } from "react-loader-spinner";
+// import { Grid } from "react-loader-spinner";
 import useStudent from "../../hooks/useStudent";
 import useAdmin from "../../hooks/useAdmin";
 import useInstructor from "../../hooks/useInstructor";
@@ -17,7 +17,7 @@ const AllClasses = ({ item }) => {
     price,
     _id,
   } = item;
-  const { user, loading } = useAuth();
+  const { user } = useAuth();
   const [, refetch] = useCart();
   const navigate = useNavigate();
   const location = useLocation();
@@ -27,7 +27,7 @@ const AllClasses = ({ item }) => {
 
   const handleAddToCart = (item) => {
     console.log(item);
-    
+
     if (isStudent) {
       const cartItem = {
         itemId: _id,
@@ -38,7 +38,7 @@ const AllClasses = ({ item }) => {
         price,
         email: user.email,
       };
-      fetch("http://localhost:5000/carts", {
+      fetch("https://the-language-space-server.vercel.app/carts", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -75,27 +75,27 @@ const AllClasses = ({ item }) => {
     }
   };
 
-  if (loading) {
-    return (
-      <div className="h-screen flex justify-center items-center">
-        <Grid
-          height="80"
-          width="80"
-          color="#22C55E"
-          ariaLabel="grid-loading"
-          radius="12.5"
-          wrapperStyle={{}}
-          wrapperClass=""
-          visible={true}
-        />
-      </div>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <div className="h-screen flex justify-center items-center">
+  //       <Grid
+  //         height="80"
+  //         width="80"
+  //         color="#22C55E"
+  //         ariaLabel="grid-loading"
+  //         radius="12.5"
+  //         wrapperStyle={{}}
+  //         wrapperClass=""
+  //         visible={true}
+  //       />
+  //     </div>
+  //   );
+  // }
 
   return (
     <div
       className={`block rounded-lg p-4 shadow-md ${
-        item.status === "Pending" ? "bg-red-50" : ""
+        item.status === "Pending" ? "bg-red-200" : ""
       } ${isStudent && item.status === "Pending" ? "hidden" : ""} ${
         isStudent && item.status === "Denied" ? "hidden" : ""
       }`}
@@ -119,7 +119,11 @@ const AllClasses = ({ item }) => {
 
         <div className="mt-6 flex justify-between items-center  text-xs">
           <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
-            <FaUserAlt className="h-5 w-5 text-green-500" />
+            <FaUserAlt
+              className={`h-5 w-5  ${
+                item.status === "Pending" ? "text-red-500" : "text-green-500"
+              }`}
+            />
             <div className="mt-1.5 sm:mt-0">
               <p className="text-gray-500">Instructor</p>
 
@@ -128,7 +132,11 @@ const AllClasses = ({ item }) => {
           </div>
 
           <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
-            <FaChair className="h-5 w-5 text-green-500" />
+            <FaChair
+              className={`h-5 w-5  ${
+                item.status === "Pending" ? "text-red-500" : "text-green-500"
+              }`}
+            />
             <div className="mt-1.5 sm:mt-0">
               <p className="text-gray-500">Available Seats</p>
 
@@ -137,7 +145,11 @@ const AllClasses = ({ item }) => {
           </div>
 
           <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
-            <FaDollarSign className="h-5 w-5 text-green-500" />
+            <FaDollarSign
+              className={`h-5 w-5  ${
+                item.status === "Pending" ? "text-red-500" : "text-green-500"
+              }`}
+            />
             <div className="mt-1.5 sm:mt-0">
               <p className="text-gray-500">Price</p>
 
@@ -148,15 +160,14 @@ const AllClasses = ({ item }) => {
         <div className="flex-grow mt-8">
           <button
             onClick={() => handleAddToCart(item)}
-            disabled={item?.role === "admin" || item?.role === "instructor"}
             className={`rounded-lg bg-green-500 px-8 py-3 transition text-sm font-medium w-full mx-auto text-center text-white ${
               isAdmin || isInstructor
-                ? "opacity-50 cursor-not-allowed"
-                : "hover:shadow-md active:bg-red-400"
+                ? "opacity-50 pointer-events-none"
+                : "hover:shadow-md active:bg-green-600"
             } ${
-              isStudent && item.status === "Pending"
-                ? "opacity-50 cursor-not-allowed"
-                : "hover:shadow-md active:bg-red-400"
+              item.status === "Pending"
+                ? "opacity-50 pointer-events-none bg-red-500"
+                : "hover:shadow-md active:bg-green-600"
             }`}
           >
             Enroll Now

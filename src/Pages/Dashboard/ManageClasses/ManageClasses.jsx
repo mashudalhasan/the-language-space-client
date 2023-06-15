@@ -17,7 +17,7 @@ const ManageClasses = () => {
   });
 
   const handleMakeApprove = (singleClass) => {
-    fetch(`http://localhost:5000/classes/approve/${singleClass._id}`, {
+    fetch(`https://the-language-space-server.vercel.app/classes/approve/${singleClass._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -37,7 +37,7 @@ const ManageClasses = () => {
   };
 
   const handleMakeDeny = (singleClass) => {
-    fetch(`http://localhost:5000/classes/deny/${singleClass._id}`, {
+    fetch(`https://the-language-space-server.vercel.app/classes/deny/${singleClass._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -61,7 +61,7 @@ const ManageClasses = () => {
       return;
     }
 
-    fetch(`http://localhost:5000/classes/feedback/${selectedClass._id}`, {
+    fetch(`https://the-language-space-server.vercel.app/classes/feedback/${selectedClass._id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

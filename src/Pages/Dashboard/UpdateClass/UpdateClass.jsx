@@ -30,7 +30,7 @@ const UpdateClass = () => {
     console.log(updatedClass);
 
     // send data to the server
-    fetch(`http://localhost:5000/classes/${_id}`, {
+    fetch(`https://the-language-space-server.vercel.app/classes/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -145,7 +145,7 @@ const UpdateClass = () => {
 
           <button
             type="submit"
-            className="w-full cursor-pointer rounded-md bg-red-100 py-3 px-5 text-base text-green-500 font-semibold transition active:bg-red-200"
+            className="w-full cursor-pointer rounded-md bg-green-100 py-3 px-5 text-base text-green-500 font-semibold transition active:bg-green-200"
           >
             Update
           </button>
