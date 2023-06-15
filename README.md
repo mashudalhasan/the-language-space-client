@@ -4,7 +4,7 @@ A full stack React website built with multiple user dashboard functionality.
 
 ## Live Link
 
-Hosted in Firebase -> [The Language Space](https://toy-land-126fb.web.app/)
+Hosted in Firebase -> [The Language Space](https://the-language-space-154db.web.app/)
 
 ## Description
 
@@ -18,25 +18,25 @@ Hosted in Firebase -> [The Language Space](https://toy-land-126fb.web.app/)
 
 5. Created dynamic dashboard for multiple user
 
-5. Used CRUD functionality to find, add, update and delete any data.
+6. Used CRUD functionality to find, add, update and delete any data.
 
-6. Used modal to show single dynamic data.
+7. Used modal to show single dynamic data.
 
-7. Used environment variable for both firebase and mongoDB config.
+8. Used environment variable for both firebase and mongoDB config.
 
-8. Used sweet alert for all operations.
+9. Used sweet alert for all operations.
 
-9. Mobile Responsive.
+10. Mobile Responsive.
 
-10. Dynamic route.
+11. Dynamic route.
 
-11. 3 layer privacy used.
+12. 3 layer privacy used.
 
-12. Student, Instructor and Admin have different dashboard and security systems.
+13. Student, Instructor and Admin have different dashboard and security systems.
 
-12. Handle loading functionality.
+14. Handle loading functionality.
 
-13. Keep code clean and organized.
+15. Keep code clean and organized.
 
 ## Used Packages
 
