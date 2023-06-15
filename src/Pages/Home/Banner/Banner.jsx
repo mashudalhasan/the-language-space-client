@@ -13,9 +13,7 @@ import './Banner.css';
 const Banner = () => {
   return (
     <Swiper
-      pagination={{
-        type: "progressbar",
-      }}
+      
       navigation={true}
       modules={[Pagination, Navigation]}
       className="mySwiper"
