@@ -60,7 +60,9 @@ const PaymentHistory = () => {
                       {pay.transactionId}
                     </div>
                   </td>
-                  <td>{pay.price}</td>
+                  <td>
+                    <div>${pay.price}</div>
+                  </td>
                   <td>
                     <div className="badge badge-sm bg-red-100 text-red-500">
                       {pay.status}
