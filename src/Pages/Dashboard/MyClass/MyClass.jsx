@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import useClass from "../../../hooks/useClass";
 import { Link } from "react-router-dom";
-import { FaEdit } from "react-icons/fa";
+import { FaCheckCircle, FaEdit } from "react-icons/fa";
 import useAuth from "../../../hooks/useAuth";
 
 const MyClass = () => {
@@ -64,7 +64,17 @@ const MyClass = () => {
                     {item?.status}
                   </div>
                 </td>
-                <td>{item?.feedback}</td>
+                <td>
+                  {item?.feedback ? (
+                    <div className="badge badge-md bg-red-100 text-red-500">
+                      {item?.feedback}
+                    </div>
+                  ) : (
+                    <div className="flex justify-center items-center">
+                      <FaCheckCircle className="text-green-500 text-base" />
+                    </div>
+                  )}
+                </td>
                 <td>
                   <button className="btn btn-ghost btn-xs">
                     <Link to={`/dashboard/updateclass/${item._id}`}>

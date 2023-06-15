@@ -200,7 +200,7 @@ const ManageClasses = () => {
       {showModal && selectedClass && (
         <dialog
           id="my_modal_5"
-          className="modal modal-bottom sm:modal-middle"
+          className="modal modal-bottom sm:modal-middle backdrop-blur-sm backdrop-brightness-75"
           open
         >
           <form method="dialog" className="modal-box">
