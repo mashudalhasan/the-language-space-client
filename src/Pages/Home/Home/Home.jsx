@@ -7,7 +7,7 @@ import Reviews from "../Reviews/Reviews";
 
 const Home = () => {
   return (
-    <div>
+    <div className="pt-16">
       <Helmet>
         <title>The Language Space | Home</title>
       </Helmet>

@@ -2,6 +2,10 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import InstructorCards from "../../../Shared/InstructorCards/InstructorCards";
 import "./PopularInstructors.css";
 import useClass from "../../../hooks/useClass";
+import Aos from "aos";
+import "aos/dist/aos.css";
+
+Aos.init();
 
 const PopularInstructors = () => {
   const [instructors] = useClass();
@@ -29,7 +33,11 @@ const PopularInstructors = () => {
           heading={"Top Instructors"}
           subheading={"Learn with the top instructors"}
         ></SectionTitle>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-3/4 mx-auto">
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-3/4 mx-auto"
+          data-aos="fade-left"
+          data-aos-duration="2000"
+        >
           {popularInstructors.map((instructor) => (
             <InstructorCards
               key={instructor._id}

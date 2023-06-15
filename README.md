@@ -48,6 +48,8 @@ Animation -> [motion-one](https://motion.dev/)
 
 Animation -> [framer-motion](https://www.framer.com/motion/)
 
+Animation -> [AOS](https://michalsnik.github.io/aos/)
+
 React Hook Form -> [react-hook-form](https://react-hook-form.com/)
 
 Firebase -> [firebase](https://firebase.google.com/)

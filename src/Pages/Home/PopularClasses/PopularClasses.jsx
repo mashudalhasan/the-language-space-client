@@ -2,6 +2,10 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import ClassCards from "../../../Shared/ClassCards/ClassCards";
 import "./PopularClasses.css";
 import useClass from "../../../hooks/useClass";
+import Aos from "aos";
+import "aos/dist/aos.css";
+
+Aos.init();
 
 const PopularClasses = () => {
   const [classes] = useClass();
@@ -27,7 +31,8 @@ const PopularClasses = () => {
           heading={"Popular Classes"}
           subheading={"Explore your dream classes"}
         ></SectionTitle>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-3/4 mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-3/4 mx-auto" data-aos="fade-right"
+      data-aos-duration="2000">
           {popularClasses.map((item) => (
             <ClassCards key={item._id} item={item}></ClassCards>
           ))}

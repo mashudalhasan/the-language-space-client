@@ -1,6 +1,10 @@
 import { useRef, useCallback, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import Aos from "aos";
+import "aos/dist/aos.css";
+
+Aos.init();
 
 const Preview = () => {
   const sliderRef = useRef(null);
@@ -28,7 +32,11 @@ const Preview = () => {
         <h2 className="text-center text-4xl font-bold tracking-tight sm:text-5xl">
           Read trusted reviews from our customers
         </h2>
-        <div className="w-3/4 lg:w-1/2 mx-auto mt-10">
+        <div
+          className="w-3/4 lg:w-1/2 mx-auto mt-10"
+          data-aos="fade-right"
+          data-aos-duration="2000"
+        >
           <Swiper slidesPerView={1} ref={sliderRef}>
             {reviews.map((review) => (
               <SwiperSlide key={review._id}>
