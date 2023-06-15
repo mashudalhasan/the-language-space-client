@@ -9,11 +9,15 @@ import placeholder from "../../assets/others/Portrait_Placeholder_Square.png";
 import "./Navbar.css";
 import useCart from "../../hooks/useCart";
 import useStudent from "../../hooks/useStudent";
+import useAdmin from "../../hooks/useAdmin";
+import useInstructor from "../../hooks/useInstructor";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [cart] = useCart();
   const [isStudent] = useStudent();
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
   // use theme from local storage if available or set light theme
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
@@ -76,14 +80,18 @@ const Navbar = () => {
       </li>
       {user && (
         <li>
-          <Link to="/dashboard">
-            Dashboard
-            {isStudent && (
-              <div className="badge bg-green-500 text-white border-none">
-                {cart?.length || 0}
-              </div>
-            )}
-          </Link>
+          {isStudent && (
+            <Link to="/dashboard/mycart">
+              Dashboard
+              {isStudent && (
+                <div className="badge bg-green-500 text-white border-none">
+                  {cart?.length || 0}
+                </div>
+              )}
+            </Link>
+          )}
+          {isAdmin && <Link to="/dashboard/manageclasses">Dashboard</Link>}
+          {isInstructor && <Link to="/dashboard/myclass">Dashboard</Link>}
         </li>
       )}
       {user && (
@@ -175,7 +183,7 @@ const Navbar = () => {
           </span>
         ) : (
           <Link to="/login">
-            <button className="bg-green-500 w-full rounded-md py-2 px-3 text-white font-semibold tracking-wide">
+            <button className="bg-green-500 hover:bg-green-600 w-full rounded-md py-2 px-3 text-white font-semibold tracking-wide">
               Login
             </button>
           </Link>

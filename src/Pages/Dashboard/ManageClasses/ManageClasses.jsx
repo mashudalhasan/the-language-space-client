@@ -3,11 +3,12 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import { useState } from "react";
-import Feedback from "../Feedback/Feedback";
 
 const ManageClasses = () => {
   const [axiosSecure] = useAxiosSecure();
-  const [showModal, setShowModal] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [feedbackText, setFeedbackText] = useState("");
+  const [selectedClass, setSelectedClass] = useState(null);
 
   const { data: classes = [], refetch } = useQuery(["classes"], async () => {
     const res = await axiosSecure.get("/classes");
@@ -52,6 +53,52 @@ const ManageClasses = () => {
             timer: 1500,
           });
         }
+      });
+  };
+
+  const handleSendFeedback = () => {
+    if (feedbackText.trim() === "") {
+      return;
+    }
+
+    fetch(`http://localhost:5000/classes/feedback/${selectedClass._id}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ feedback: feedbackText }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          setFeedbackText("");
+          setSelectedClass(null);
+          setShowModal(false);
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Feedback sent successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else {
+          Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: "Failed to send feedback",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: "An error occurred",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       });
   };
 
@@ -134,25 +181,53 @@ const ManageClasses = () => {
                       Deny
                     </button>
                     <button
-                      onClick={() => setShowModal(singleClass._id)}
+                      onClick={() => {
+                        setShowModal(true);
+                        setSelectedClass(singleClass);
+                      }}
                       className="btn btn-ghost btn-xs normal-case"
                     >
                       Send Feedback
                     </button>
                   </div>
-                  {showModal && (
-                    <Feedback
-                      singleClass={showModal}
-                      setShowModal={setShowModal}
-                      refetch={refetch}
-                    />
-                  )}
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+
+      {showModal && selectedClass && (
+        <dialog
+          id="my_modal_5"
+          className="modal modal-bottom sm:modal-middle"
+          open
+        >
+          <form method="dialog" className="modal-box">
+            <h3 className="font-bold text-lg ml-2">Send Feedback</h3>
+            <textarea
+              className="textarea w-full"
+              placeholder="Enter your feedback..."
+              value={feedbackText}
+              onChange={(e) => setFeedbackText(e.target.value)}
+            ></textarea>
+            <div className="modal-action">
+              <button className="btn normal-case bg-green-100 text-green-500 hover:bg-green-200" onClick={handleSendFeedback}>
+                Send Feedback
+              </button>
+              <button
+                className="btn normal-case"
+                onClick={() => {
+                  setShowModal(false);
+                  setSelectedClass(null);
+                }}
+              >
+                Close
+              </button>
+            </div>
+          </form>
+        </dialog>
+      )}
     </div>
   );
 };
