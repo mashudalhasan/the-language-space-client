@@ -17,8 +17,9 @@ const UpdateClass = () => {
     const instructorName = form.instructorName.value;
     const email = form.email.value;
     const image = form.image.value;
-    const price = form.price.value;
-    const quantity = form.quantity.value;
+    const price = parseInt(form.price.value, 10);
+    const quantity = parseInt(form.quantity.value, 10);
+    const numberOfStudents = uniqueClass.number_of_students;
 
     const updatedClass = {
       instructor_name: instructorName,
@@ -26,6 +27,7 @@ const UpdateClass = () => {
       class_image: image,
       price,
       available_seats: quantity,
+      number_of_students: numberOfStudents,
     };
     console.log(updatedClass);
 

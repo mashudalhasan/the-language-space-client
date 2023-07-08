@@ -6,6 +6,10 @@ const PaymentHistory = () => {
   const [payment] = usePayment();
   console.log(payment);
 
+  const sortedPayment = payment.sort(
+    (a, b) => new Date(b.date) - new Date(a.date)
+  );
+
   return (
     <div>
       <Helmet>
@@ -31,7 +35,7 @@ const PaymentHistory = () => {
               </tr>
             </thead>
             <tbody>
-              {payment.map((pay) => (
+              {sortedPayment.map((pay) => (
                 <tr key={pay._id} className="text-center text-xs">
                   <td>
                     {new Date(pay.date)
@@ -64,7 +68,7 @@ const PaymentHistory = () => {
                     <div>${pay.price}</div>
                   </td>
                   <td>
-                    <div className="badge badge-sm bg-red-100 text-red-500">
+                    <div className="badge badge-sm h-full rounded bg-red-100 text-red-500">
                       {pay.status}
                     </div>
                   </td>

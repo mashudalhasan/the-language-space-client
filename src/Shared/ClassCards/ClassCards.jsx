@@ -3,6 +3,7 @@ import {
   FaDollarSign,
   FaRegArrowAltCircleRight,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 // TODO: have to use dynamic image
 const ClassCards = ({ item }) => {
@@ -15,7 +16,7 @@ const ClassCards = ({ item }) => {
       <div>
         <img src={class_image} alt="" className="rounded-t-lg h-96 w-full object-cover" />
       </div>
-      <a className="block bg-white p-4 sm:p-6 lg:p-8" href="">
+      <Link className="block bg-white p-4 sm:p-6 lg:p-8" to="/classes">
         <div>
           <h3 className="text-lg font-bold text-gray-900 sm:text-xl">
             {class_name}
@@ -47,7 +48,7 @@ const ClassCards = ({ item }) => {
             <FaRegArrowAltCircleRight className="h-8 w-8 text-green-500" />
           </div>
         </div>
-      </a>
+      </Link>
     </div>
   );
 };

@@ -17,8 +17,8 @@ const MyCart = () => {
       text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: "#22C55E",
+      cancelButtonColor: "#EF4444",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
@@ -135,7 +135,7 @@ const MyCart = () => {
                 <div className="flex justify-end">
                   <Link
                     to="/dashboard/payment"
-                    className="block rounded-md bg-green-500 px-5 py-3 text-sm text-white transition hover:bg-opacity-90 active:bg-red-600"
+                    className="block rounded-md bg-green-500 px-5 py-3 text-sm text-white transition hover:bg-opacity-90 active:bg-green-600"
                   >
                     Checkout
                   </Link>

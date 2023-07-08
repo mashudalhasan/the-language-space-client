@@ -15,7 +15,7 @@ const Main = () => {
   return (
     <div>
       <Navbar></Navbar>
-      <motion.div className="z-10 progress-bar mt-16" style={{ scaleX }} />
+      <motion.div className="z-50 progress-bar mt-16" style={{ scaleX }} />
       <div className="min-h-[calc(100vh-448px)]">
         <Outlet></Outlet>
       </div>

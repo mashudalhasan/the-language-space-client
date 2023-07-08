@@ -16,7 +16,7 @@ const Banner = () => {
       
       navigation={true}
       modules={[Pagination, Navigation]}
-      className="mySwiper"
+      className="mySwiper lg:h-screen"
     >
       <SwiperSlide>
         <img src={banner1} alt="" />

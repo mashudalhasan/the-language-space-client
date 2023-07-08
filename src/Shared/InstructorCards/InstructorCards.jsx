@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import classImg from "../../assets/banner/class.svg";
 
 const InstructorCards = ({ instructor }) => {
@@ -9,7 +10,7 @@ const InstructorCards = ({ instructor }) => {
 
   return (
     <div>
-      <a href="#" className="group relative block bg-black rounded-lg">
+      <Link to="/instructors" className="group relative block bg-black rounded-lg">
         <img
           alt="Instructor"
           src={instructor_image}
@@ -37,7 +38,7 @@ const InstructorCards = ({ instructor }) => {
             </div>
           </div>
         </div>
-      </a>
+      </Link>
     </div>
   );
 };

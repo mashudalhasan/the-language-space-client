@@ -17,16 +17,18 @@ const AddClass = () => {
     const status = form.status.value;
     const image = form.image.value;
     const instructorImage = form.instructorImage.value;
+    const students = form.students.value;
 
     const newClass = {
       instructor_name: instructorName,
       instructor_email: email,
       class_name: name,
-      available_seats: quantity,
-      price,
+      available_seats: parseInt(quantity),
+      price: parseInt(price),
       status,
       class_image: image,
       instructor_image: instructorImage,
+      number_of_students: parseInt(students, 0),
     };
     console.log(newClass);
 
@@ -108,7 +110,7 @@ const AddClass = () => {
                 <input
                   type="text"
                   name="name"
-                  placeholder="Enter Toy name"
+                  placeholder="Enter Class name"
                   className="input input-bordered w-full"
                 />
               </label>
@@ -157,7 +159,7 @@ const AddClass = () => {
               </label>
             </div>
           </div>
-          {/* form class image and instructor image row */}
+          {/* form instructor image and enrolled students row */}
           <div className="md:flex gap-5 mb-5">
             <div className="form-control md:w-1/2">
               <label className="label">
@@ -175,17 +177,30 @@ const AddClass = () => {
             </div>
             <div className="form-control md:w-1/2">
               <label className="label">
-                <span className="label-text">Class Image</span>
+                <span className="label-text">Enrolled Students</span>
               </label>
               <label>
                 <input
-                  type="text"
-                  name="image"
-                  placeholder="Enter photo URL"
-                  className="input input-bordered w-full"
+                  type="number"
+                  name="students"
+                  placeholder="Enter the number of students"
+                  className="input input-bordered w-full text-gray-500"
                 />
               </label>
             </div>
+          </div>
+          <div className="form-control mb-5">
+            <label className="label">
+              <span className="label-text">Class Image</span>
+            </label>
+            <label>
+              <input
+                type="text"
+                name="image"
+                placeholder="Enter photo URL"
+                className="input input-bordered w-full"
+              />
+            </label>
           </div>
 
           <button

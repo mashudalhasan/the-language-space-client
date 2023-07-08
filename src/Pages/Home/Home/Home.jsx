@@ -4,6 +4,9 @@ import PopularClasses from "../PopularClasses/PopularClasses";
 import PopularInstructors from "../PopularInstructors/PopularInstructors";
 import ParallaxSection from "../ParallaxSection/ParallaxSection";
 import Reviews from "../Reviews/Reviews";
+import MockupFeatures from "../MockupFeatures/MockupFeatures";
+import MottoBanner from "../MottoBanner/MottoBanner";
+import Newsletter from "../Newsletter/Newsletter";
 
 const Home = () => {
   return (
@@ -12,7 +15,13 @@ const Home = () => {
         <title>The Language Space | Home</title>
       </Helmet>
       <Banner></Banner>
-      <div className="-mt-11">
+      <div className="-mt-12 relative">
+        <MottoBanner></MottoBanner>
+      </div>
+      <div className="">
+        <MockupFeatures></MockupFeatures>
+      </div>
+      <div className="">
         <PopularClasses></PopularClasses>
       </div>
       <div className="-mt-12">
@@ -23,6 +32,9 @@ const Home = () => {
       </div>
       <div className="my-12">
         <Reviews></Reviews>
+      </div>
+      <div className="my-12">
+        <Newsletter></Newsletter>
       </div>
     </div>
   );

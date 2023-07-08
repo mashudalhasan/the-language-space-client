@@ -13,7 +13,7 @@ const useClass = () => {
       });
   }, []);
 
-  return [classes, loading];
+  return [classes, setClasses, loading];
 };
 
 export default useClass;

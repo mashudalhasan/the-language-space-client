@@ -27,8 +27,8 @@ const PopularInstructors = () => {
   );
 
   return (
-    <section className="bg-circle p-12">
-      <div className="classes">
+    <section className=" p-12 relative bg-shape">
+      <div className="z-10">
         <SectionTitle
           heading={"Top Instructors"}
           subheading={"Learn with the top instructors"}

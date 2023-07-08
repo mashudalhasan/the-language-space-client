@@ -27,8 +27,8 @@ const Preview = () => {
   }, []);
 
   return (
-    <section>
-      <div className="pt-20 pb-20 lg:pt-[120px] lg:pb-[120px]">
+    <section className="relative bg-shape">
+      <div className="z-10 pt-20 pb-20 lg:pt-[120px] lg:pb-[120px]">
         <h2 className="text-center text-4xl font-bold tracking-tight sm:text-5xl">
           Read trusted reviews from our customers
         </h2>

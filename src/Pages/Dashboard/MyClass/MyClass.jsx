@@ -3,14 +3,46 @@ import useClass from "../../../hooks/useClass";
 import { Link } from "react-router-dom";
 import { FaCheckCircle, FaEdit } from "react-icons/fa";
 import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const MyClass = () => {
   const { user } = useAuth();
-  const [classes] = useClass();
+  const [classes, setClasses] = useClass();
   const myClasses = classes.filter(
     (sort) => sort.instructor_email === user?.email
   );
   console.log(myClasses);
+
+  const handleDelete = (item) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#22C55E",
+      cancelButtonColor: "#EF4444",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(
+          `https://the-language-space-server.vercel.app/classes/${item._id}`,
+          {
+            method: "DELETE",
+          }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire("Deleted!", "Your Course has been deleted.", "success");
+              setClasses((prevClasses) =>
+                prevClasses.filter((classItem) => classItem._id !== item._id)
+              );
+            }
+          });
+      }
+    });
+  };
+
   return (
     <div>
       <Helmet>
@@ -53,7 +85,7 @@ const MyClass = () => {
                 <td>{item?.number_of_students}</td>
                 <td>
                   <div
-                    className={`badge badge-sm ${
+                    className={`badge badge-sm h-full ${
                       item?.status === "Approved"
                         ? "bg-green-100 text-green-600"
                         : item?.status === "Denied"
@@ -66,11 +98,15 @@ const MyClass = () => {
                 </td>
                 <td>
                   {item?.feedback ? (
-                    <div className="badge badge-md bg-red-100 text-red-500">
+                    <div className="badge badge-md bg-red-100 text-red-500 h-full rounded">
                       {item?.feedback}
                     </div>
                   ) : (
-                    <div className="flex justify-center items-center">
+                    <div
+                      className={`flex justify-center items-center ${
+                        item?.status === "Pending" ? "hidden" : ""
+                      }`}
+                    >
                       <FaCheckCircle className="text-green-500 text-base" />
                     </div>
                   )}
@@ -81,7 +117,12 @@ const MyClass = () => {
                       <FaEdit />
                     </Link>
                   </button>
-                  <button className="btn btn-ghost btn-xs">Delete</button>
+                  <button
+                    onClick={() => handleDelete(item)}
+                    className="btn btn-ghost btn-xs"
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}

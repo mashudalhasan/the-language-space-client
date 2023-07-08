@@ -107,7 +107,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-white bg-opacity-80 fixed z-10 backdrop-blur-sm">
+    <div className="navbar bg-white bg-opacity-80 fixed z-40 backdrop-filter backdrop-blur-sm">
       <div className="navbar-start">
         <div className="dropdown z-10">
           <label

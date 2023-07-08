@@ -48,8 +48,8 @@ const AllInstructors = ({ instructor }) => {
           </div>
         </div>
         <div className="flex-grow mt-8">
-          <Link to="/">
-            <button className="rounded-lg bg-green-500 px-8 py-3 transition hover:shadow-md active:bg-red-400 text-sm font-medium w-full mx-auto text-center text-white">
+          <Link to="/classes">
+            <button className="rounded-lg bg-green-500 px-8 py-3 transition hover:shadow-md active:bg-green-600 text-sm font-medium w-full mx-auto text-center text-white">
               See Classes
             </button>
           </Link>

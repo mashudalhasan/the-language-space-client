@@ -25,14 +25,17 @@ const PopularClasses = () => {
   popularClasses.sort((a, b) => b.number_of_students - a.number_of_students);
 
   return (
-    <section className="bg-circle pt-10">
-      <div className="classes">
+    <section className="py-14 lg:py-28 relative bg-shape">
+      <div className="z-10">
         <SectionTitle
           heading={"Popular Classes"}
           subheading={"Explore your dream classes"}
         ></SectionTitle>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-3/4 mx-auto" data-aos="fade-right"
-      data-aos-duration="2000">
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-3/4 mx-auto"
+          data-aos="fade-right"
+          data-aos-duration="2000"
+        >
           {popularClasses.map((item) => (
             <ClassCards key={item._id} item={item}></ClassCards>
           ))}

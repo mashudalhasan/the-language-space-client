@@ -4,8 +4,9 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import "./CheckoutForm.css";
+import Swal from "sweetalert2";
 
-const CheckOutForm = ({ price, cart }) => {
+const CheckOutForm = ({ price, cart, refetch }) => {
   const { user } = useAuth();
   const stripe = useStripe();
   const elements = useElements();
@@ -86,8 +87,15 @@ const CheckOutForm = ({ price, cart }) => {
       };
       axiosSecure.post("/payment", payment).then((res) => {
         console.log(res.data);
-        if (res.data.insertedId) {
-          // display confirm
+        if (res.data.insertResult.insertedId) {
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Payment is Successful",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
       });
     }
@@ -114,7 +122,7 @@ const CheckOutForm = ({ price, cart }) => {
         />
         <div className="text-end">
           <button
-            className="mt-10 rounded-md bg-red-500 px-10 py-2 text-sm text-white transition hover:bg-opacity-90 active:bg-red-600"
+            className="mt-10 rounded-md bg-green-500 px-10 py-2 text-sm text-white transition hover:bg-opacity-90 active:bg-green-600"
             type="submit"
             disabled={!stripe || !clientSecret || processing}
           >
@@ -126,9 +134,9 @@ const CheckOutForm = ({ price, cart }) => {
       {cardError && (
         <div className="lg:w-3/4 mx-auto flex justify-center items-center gap-8 mt-5 rounded-md bg-red-100 px-10 py-2">
           <span>
-            <FaTimesCircle className="text-lg text-red-500" />
+            <FaTimesCircle className="text-lg text-green-500" />
           </span>
-          <p className="text-red-500 text-xs font-medium text-center">
+          <p className="text-green-500 text-xs font-medium text-center">
             {cardError}
           </p>
         </div>

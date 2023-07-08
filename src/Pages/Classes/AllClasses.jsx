@@ -64,8 +64,8 @@ const AllClasses = ({ item }) => {
         title: "Please Login for Enrollment",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
+        confirmButtonColor: "#22C55E",
+        cancelButtonColor: "#EF4444",
         confirmButtonText: "Login",
       }).then((result) => {
         if (result.isConfirmed) {
@@ -95,7 +95,7 @@ const AllClasses = ({ item }) => {
   return (
     <div
       className={`block rounded-lg p-4 shadow-md ${
-        item.status === "Pending" ? "bg-red-200" : ""
+        item.status === "Pending" || available_seats <= 0 ? "bg-red-200" : ""
       } ${isStudent && item.status === "Pending" ? "hidden" : ""} ${
         isStudent && item.status === "Denied" ? "hidden" : ""
       }`}
@@ -165,7 +165,7 @@ const AllClasses = ({ item }) => {
                 ? "opacity-50 pointer-events-none"
                 : "hover:shadow-md active:bg-green-600"
             } ${
-              item.status === "Pending"
+              item.status === "Pending" || available_seats <= 0
                 ? "opacity-50 pointer-events-none bg-red-500"
                 : "hover:shadow-md active:bg-green-600"
             }`}
