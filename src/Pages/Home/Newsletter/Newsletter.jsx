@@ -5,7 +5,7 @@ const Newsletter = () => {
         <div className="p-8 md:p-12 lg:px-16 lg:py-24">
           <div className="mx-auto max-w-lg text-center">
             <h2 className="text-center text-4xl font-bold tracking-tight sm:text-5xl">
-              <span className="text-xl lg:text-2xl">Stay Connected, Stay Informed</span> <br /> Sign Up for Our Newsletter!
+              <span className="text-center text-xl lg:text-2xl">Stay Connected, Stay Informed</span> <br /> Sign Up for Our Newsletter!
             </h2>
 
             <p className="hidden text-gray-500 sm:mt-4 sm:block">
