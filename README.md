@@ -6,6 +6,11 @@ A full stack React website built with multiple user dashboard functionality.
 
 Hosted in Firebase -> [The Language Space](https://the-language-space-154db.web.app/)
 
+## Admin Dashboard Keys
+
+Email: alhasan@gmail.com <br/>
+Password: @1Hasan1@
+
 ## Description
 
 1. We use firebase authentication for this project.

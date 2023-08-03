@@ -3,7 +3,6 @@ import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import useCart from "../../hooks/useCart";
 import useAuth from "../../hooks/useAuth";
-// import { Grid } from "react-loader-spinner";
 import useStudent from "../../hooks/useStudent";
 import useAdmin from "../../hooks/useAdmin";
 import useInstructor from "../../hooks/useInstructor";
@@ -74,23 +73,6 @@ const AllClasses = ({ item }) => {
       });
     }
   };
-
-  // if (loading) {
-  //   return (
-  //     <div className="h-screen flex justify-center items-center">
-  //       <Grid
-  //         height="80"
-  //         width="80"
-  //         color="#22C55E"
-  //         ariaLabel="grid-loading"
-  //         radius="12.5"
-  //         wrapperStyle={{}}
-  //         wrapperClass=""
-  //         visible={true}
-  //       />
-  //     </div>
-  //   );
-  // }
 
   return (
     <div
